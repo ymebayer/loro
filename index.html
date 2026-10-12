@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#74ACDF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Loro">
 <title>לורו – ספרדית של ארגנטינה לילדים</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -164,11 +168,138 @@ legend{font-weight:700;margin-bottom:6px;padding:0}
 @keyframes fall{to{transform:translate(var(--dx,0),110vh) rotate(540deg)}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 @media (max-width:380px){.hero{flex-direction:column;text-align:center}.opts{grid-template-columns:1fr}}
+button,.tile,.mcard,.stk{touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.tdot{font-family:"Fredoka",sans-serif;font-weight:700;font-size:24px;align-self:flex-end}
+.chest{animation:glow 1.6s ease-in-out infinite alternate;margin:0 0 14px}
+@keyframes glow{from{box-shadow:0 5px 0 var(--line),0 0 0 0 rgba(246,180,14,.65)}to{box-shadow:0 5px 0 var(--line),0 0 0 12px rgba(246,180,14,0)}}
+.journey{display:flex;align-items:center;gap:12px;width:100%;text-align:start;background:var(--paper);border:3px solid var(--line);border-radius:22px;padding:12px 14px;box-shadow:0 5px 0 var(--line);margin:0 0 14px;cursor:pointer;color:var(--text)}
+.journey .jem{font-size:34px;flex:none}.journey b{display:block;font-family:"Rubik",sans-serif}.journey small{color:var(--muted)}
+.game{display:flex;gap:14px;align-items:center;width:100%;text-align:start;border:3px solid var(--line);border-radius:24px;padding:16px;box-shadow:0 6px 0 var(--line);margin-bottom:14px;cursor:pointer;color:var(--text)}
+.game.g1{background:var(--vio2)}.game.g2{background:var(--red2)}
+.game .gic{font-size:44px;flex:none}.game b{display:block;font-family:"Fredoka","Rubik",sans-serif;font-size:24px}.game small{display:block;color:var(--muted)}.game em{font-style:normal;font-weight:700;font-size:14px}
+.memo{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mcard{aspect-ratio:3/4;border:3px solid var(--line);border-radius:14px;background:var(--cel);box-shadow:0 4px 0 var(--line);display:grid;place-items:center;align-content:center;gap:2px;padding:4px;cursor:pointer;color:var(--text);font-family:"Fredoka","Rubik",sans-serif;overflow:hidden}
+.mcard .back{font-size:30px}.mcard.open{background:var(--paper);animation:flip .25s}.mcard.done{background:var(--grn2);border-color:var(--grn)}
+.mcard b{font-size:clamp(13px,3.6vw,18px);font-weight:600;line-height:1.15;overflow-wrap:anywhere}
+.mcard .me{font-size:26px}.mcard small{font-family:"Varela Round",sans-serif;font-size:13px;font-weight:700;line-height:1.2}
+@keyframes flip{from{transform:rotateY(90deg)}to{transform:rotateY(0)}}
+.tbar{flex:1;height:16px;border:2.5px solid var(--line);border-radius:999px;background:var(--paper);overflow:hidden}
+.tbar i{display:block;height:100%;background:var(--grn);transition:width .2s linear}
+.speed-score{font-family:"Rubik",sans-serif;font-weight:800;font-size:22px;text-align:start}
+.opt.he{font-family:"Varela Round","Rubik",sans-serif;font-size:19px}
+.stk-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.stk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px}
+.stk{position:relative;display:grid;justify-items:center;gap:2px;background:var(--paper);border:3px solid var(--line);border-radius:16px;padding:10px 6px 8px;box-shadow:0 4px 0 var(--line);cursor:pointer;color:var(--text);min-width:100px}
+.stk .se{font-size:40px;line-height:1.1}.stk b{font-family:"Fredoka",sans-serif;font-weight:600;font-size:15px}.stk small{color:var(--muted);font-size:12px}.stk i{font-style:normal;font-size:11px;font-weight:700}
+.stk.rare{background:linear-gradient(160deg,var(--cel2),var(--paper))}
+.stk.legend{background:linear-gradient(160deg,var(--sun2),var(--paper));border-color:var(--sun)}
+.stk.reveal{animation:pop .6s cubic-bezier(.3,1.6,.5,1)}
+.stk.empty{opacity:.5;border-style:dashed;cursor:default;box-shadow:none}
+.stk .cnt{position:absolute;top:-8px;inset-inline-start:-8px;background:var(--red);color:#fff;border:2px solid var(--line);border-radius:999px;font-size:12px;padding:0 6px;font-style:normal}
+.album-head b{font-family:"Rubik",sans-serif;font-size:22px}
+.trail{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:10px}
+.trail li{display:flex}.trail li:nth-child(even){justify-content:flex-end}
+.stn{display:flex;gap:10px;align-items:center;width:88%;text-align:start;background:var(--paper);border:3px solid var(--line);border-radius:20px;padding:10px 12px;box-shadow:0 4px 0 var(--line);cursor:pointer;color:var(--text)}
+.stn .sem{font-size:32px;flex:none}.stn b{display:block;font-family:"Fredoka",sans-serif;font-weight:600;font-size:19px}.stn small{color:var(--muted);font-size:14px;line-height:1.35;display:block}
+.trail .past .stn{background:var(--grn2)}.trail .here .stn{background:var(--sun2);animation:glow 1.6s ease-in-out infinite alternate}.trail .lock .stn{opacity:.6;cursor:default}
+.arrive{text-align:center;background:var(--sun2);margin-top:14px}.arrive .jbig{font-size:56px}.arrive b{font-size:22px}
+.intro{text-align:center;padding-top:8px}
+.iem{font-size:96px;line-height:1;display:inline-block;animation:bob 2.2s ease-in-out infinite alternate}
+.itext{font-size:19px;margin:12px 0}
+.ilist{text-align:start;list-style:none;padding:0;margin:14px 0;display:grid;gap:10px}
+.ilist li{background:var(--paper);border:2.5px solid var(--line);border-radius:16px;padding:10px 12px;box-shadow:0 3px 0 var(--line)}
+.idots{display:flex;gap:8px;justify-content:center;margin:12px 0 0}
+.idots i{width:10px;height:10px;border-radius:50%;background:var(--cel2);border:2px solid var(--line)}
+.idots i.on{background:var(--sun);width:26px;border-radius:6px}
+.loro.yay{display:inline-block;animation:hop .6s ease}
+@keyframes hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-14px) rotate(-10deg)}70%{transform:translateY(0) rotate(6deg)}}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;justify-content:center;gap:4px;background:var(--paper);border-top:3px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px))}
+.nav button{flex:1;max-width:110px;background:none;border:0;display:grid;justify-items:center;padding:4px 0;cursor:pointer;border-radius:14px;color:var(--muted)}
+.nav button span{font-size:24px;line-height:1.15}.nav button small{font-size:12px;font-weight:700}
+.nav button.on{background:var(--sun2);color:var(--text)}
+.wrap.hasnav{padding-bottom:110px}
+@media (max-width:480px){
+body{font-size:16px}.wrap{padding:10px 12px 36px}h1{font-size:24px}h3{font-size:17px;margin:16px 0 8px}
+.top{margin-bottom:10px;gap:8px}.top .ttl{font-size:19px}.avbtn{width:44px;height:44px;font-size:26px}.chip{padding:3px 9px;font-size:15px}
+.btn{min-height:46px;padding:10px 14px;font-size:16px}.btn.big{font-size:18px;padding:12px 14px;margin-top:10px}.btn.icon{width:46px;height:46px;font-size:20px}
+.hero{flex-direction:row;text-align:start;gap:12px;margin-bottom:12px}.sun{width:92px;height:92px}.sun .face{font-size:36px}
+.mode{grid-template-columns:52px 1fr;padding:12px 14px;border-radius:22px}.mode .ic{width:52px;height:52px;font-size:28px;border-radius:16px}.mode b{font-size:20px}.mode .ds{font-size:15px}
+.card{padding:14px;border-radius:22px;margin-bottom:12px}
+.pic{font-size:52px}.es-word{font-size:clamp(28px,9.5vw,42px);margin:2px 0 0}.translit{font-size:clamp(22px,7vw,30px);line-height:1.55;margin:0}.meaning{font-size:19px;margin:4px 0 2px}
+.word-card .row{margin-top:8px}.mic{width:82px;height:82px;font-size:36px}.res .stars{font-size:32px}.res .msg{font-size:18px}
+.lead{margin-bottom:8px}.loro{font-size:30px}.bubble{font-size:15px;padding:5px 10px}
+.sent{font-size:clamp(20px,6.2vw,26px);margin:30px 0 4px}.he-tr{font-size:16px}.he-tr.big{font-size:18px;margin:36px 0 10px}
+.opts{grid-template-columns:1fr 1fr;gap:10px}.opt{font-size:18px;min-height:54px;padding:10px 6px}.opt.he{font-size:16px}
+.tile{font-size:18px;padding:7px 11px}.line{min-height:58px}.fb{padding:12px}.fbt{font-size:18px}
+.cats,.plist,.badges{grid-template-columns:repeat(2,1fr);gap:10px}.cat{padding:10px}
+.trophy{font-size:64px}.big-stars{font-size:28px}
+.stk-grid{grid-template-columns:repeat(3,1fr);gap:8px}.stk{min-width:0;padding:8px 4px 6px}.stk .se{font-size:32px}.stk b{font-size:13px}
+.game{padding:12px}.game .gic{font-size:36px}.game b{font-size:21px}.iem{font-size:76px}.journey{padding:10px 12px}
+}
+@media (max-width:480px) and (max-height:720px){.pic{font-size:42px}.translit{line-height:1.45}.mic{width:70px;height:70px;font-size:30px}.sent{margin-top:26px}}
+.games{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px}
+.games .game{display:grid;justify-items:start;align-content:start;gap:3px;margin:0;padding:14px;height:100%}
+.games .game .gic{font-size:40px}.games .game b{font-size:21px}
+.game.g3{background:var(--grn2)}.game.g4{background:var(--sun2)}.game.g5{background:var(--red2)}.game.g6{background:var(--cel2)}
+.game.used{opacity:.55;cursor:default}
+.gstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:4px}
+.gstrip button{display:grid;justify-items:center;gap:2px;background:var(--paper);border:3px solid var(--line);border-radius:18px;padding:10px 4px;box-shadow:0 4px 0 var(--line);cursor:pointer;color:var(--text)}
+.gstrip span{font-size:30px;line-height:1.1}.gstrip small{font-weight:700;font-size:13px}
+.argday{background:linear-gradient(160deg,var(--cel2),var(--paper));margin-top:14px}
+.argday .ah{display:flex;align-items:center;gap:8px}.argday .ah b{flex:1}
+.argday .ae{font-family:"Fredoka",sans-serif;font-weight:700;font-size:28px;margin:6px 0 0}
+.argday .am{font-weight:700;margin:0 0 6px}.argday .ax{font-family:"Fredoka",sans-serif;font-weight:500;font-size:18px;margin:0}
+.pitch{position:relative;height:150px;border:3px solid var(--line);border-radius:22px;background:linear-gradient(180deg,#9fd3f5 0 38%,#4caf62 38% 100%);overflow:hidden;margin-bottom:10px}
+.pitch .goal{position:absolute;top:6px;left:50%;transform:translateX(-50%);font-size:80px;line-height:1}
+.pitch .keeper{position:absolute;top:44px;left:50%;transform:translateX(-50%);font-size:34px;transition:transform .5s ease}
+.pitch .ball{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:32px;transition:transform .6s ease}
+.pitch.a-goal .ball{transform:translate(calc(-50% + 26px),-84px) scale(.6)}.pitch.a-goal .keeper{transform:translate(calc(-50% - 46px),8px) rotate(-35deg)}
+.pitch.a-save .ball{transform:translate(-50%,-58px) scale(.7)}.pitch.a-save .keeper{transform:translate(-50%,10px) scale(1.3)}
+.score{display:flex;align-items:center;justify-content:center;gap:10px;font-family:"Rubik",sans-serif;font-weight:800;font-size:20px;margin-bottom:6px;direction:ltr}
+.score b{font-size:28px;background:var(--paper);border:2.5px solid var(--line);border-radius:10px;padding:0 10px}
+.kicks{display:flex;justify-content:space-between;font-size:15px;margin-bottom:8px;direction:ltr}
+.com{text-align:center;font-family:"Rubik",sans-serif;font-weight:800;font-size:22px;margin:4px 0 10px}
+.turn{text-align:center;font-weight:700;margin:4px 0 10px}
+.chat{display:grid;gap:10px;margin-bottom:12px}
+.msg{display:flex;gap:8px;align-items:flex-end}.msg.me{flex-direction:row-reverse}
+.mav{font-size:30px;flex:none;line-height:1}
+.mb{background:var(--paper);border:2.5px solid var(--line);border-radius:18px 18px 4px 18px;padding:8px 12px;box-shadow:0 3px 0 var(--line);max-width:82%}
+.msg.me .mb{background:var(--cel2);border-radius:18px 18px 18px 4px}
+.mb p{margin:0;font-family:"Fredoka",sans-serif;font-weight:600;font-size:19px}.mb small{color:var(--muted)}
+.replies{display:grid;gap:10px}.opt.reply{font-size:18px}.opt.reply small{display:block;font-family:"Varela Round",sans-serif;font-size:13px;font-weight:700}
+.cookcard{text-align:center}.bowl{font-size:56px;line-height:1}
+.slots{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:6px 0}
+.slot{width:44px;height:44px;border:2.5px dashed var(--line);border-radius:12px;display:grid;place-items:center;font-size:24px;background:var(--paper)}
+.slot.ok{border-style:solid;background:var(--grn2);animation:pop .4s}
+.need{font-size:21px;margin:8px 0 2px;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.need b{font-family:"Fredoka",sans-serif;color:var(--red)}
+.counter{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ing{aspect-ratio:1;border:3px solid var(--line);border-radius:18px;background:var(--paper);box-shadow:0 4px 0 var(--line);display:grid;place-items:center;align-content:center;cursor:pointer;padding:4px;color:var(--text)}
+.ing span{font-size:40px;line-height:1}.ing small{font-family:"Fredoka",sans-serif;font-size:12px;font-weight:600;line-height:1.1}
+.ing.used{visibility:hidden}.ing.bad{background:var(--red2);animation:shake .4s}.ing.hint{background:var(--sun2);animation:glow 1s ease-in-out infinite alternate}
+.opts.tri{grid-template-columns:1fr}
+@media (max-width:480px){.games{gap:10px}.games .game{padding:12px}.games .game .gic{font-size:34px}.games .game b{font-size:18px}.games .game small{font-size:13px}.gstrip span{font-size:26px}.gstrip small{font-size:12px}.argday .ae{font-size:24px}.pitch{height:132px}.pitch .goal{font-size:70px}.ing span{font-size:32px}.counter{gap:8px}.mb p{font-size:17px}.com{font-size:19px}}
+#flash{position:fixed;inset:0;pointer-events:none;z-index:65;display:grid;place-items:center}
+#flash.on{animation:fl .95s ease forwards}
+#flash.ok{box-shadow:inset 0 0 0 12px rgba(22,161,94,.8)}#flash.no{box-shadow:inset 0 0 0 12px rgba(238,85,70,.8)}
+#flash span{width:140px;height:140px;border-radius:50%;display:grid;place-items:center;font-size:78px;font-weight:800;color:#fff;border:4px solid var(--line);box-shadow:0 6px 0 var(--line);animation:stamp .55s cubic-bezier(.3,1.6,.5,1)}
+#flash.ok span{background:var(--grn)}#flash.no span{background:var(--red)}
+@keyframes fl{0%{opacity:0}12%{opacity:1}70%{opacity:1}100%{opacity:0}}
+@keyframes stamp{0%{transform:scale(2.4) rotate(-12deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
+.word-card.good{border-color:var(--grn);box-shadow:0 6px 0 var(--grn),0 0 0 6px var(--grn2)}
+.word-card.bad{border-color:var(--red);box-shadow:0 6px 0 var(--red),0 0 0 6px var(--red2);animation:shake .45s}
+.res.good .msg{color:var(--grn)}.res.bad .msg{color:var(--red)}
+.cmp{display:flex;gap:10px;justify-content:center;margin:6px 0 10px;flex-wrap:wrap}
+.cmp div{background:var(--paper);border:2.5px solid var(--line);border-radius:14px;padding:6px 12px;min-width:110px}
+.cmp small{display:block;color:var(--muted);font-size:12px}
+.cmp b{font-family:"Fredoka",sans-serif;font-weight:600;font-size:20px}.cmp b.g{color:var(--grn)}.cmp b.r{color:var(--red)}
+@media (max-width:480px){#flash span{width:110px;height:110px;font-size:60px}.cmp b{font-size:18px}}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <div id="fx" aria-hidden="true"></div>
+<div id="flash" aria-hidden="true"></div>
 <div id="toast" role="status" aria-live="polite"></div>
 <div id="modal"></div>
 <noscript><p style="padding:20px">כדי לשחק צריך להפעיל JavaScript.</p></noscript>
@@ -760,6 +891,11 @@ const pick = a => a[rnd(a.length)];
 const wait = ms => new Promise(r => setTimeout(r, ms));
 const dayNum = () => { const d = new Date(); return Math.floor((d.getTime() - d.getTimezoneOffset() * 60000) / 86400000); };
 const fmt = n => Number(n).toLocaleString('he-IL');
+const capFirst = s => String(s).replace(/^([¿¡"'(]*)(\S)/, (m, p, c) => p + c.toUpperCase());
+const esb = t => `<bdi lang="es" dir="ltr">${esc(t)}</bdi>`;
+const lri = t => '\u2066' + t + '\u2069';
+const okLine = R => `${esb(R.praise || '')} ${esc(R.heMsg || '')}`;
+const thisIs = np => { const m = String(np).match(/^(el|la|los|las) /); const d = m ? { el: 'Ese es', la: 'Esa es', los: 'Esos son', las: 'Esas son' }[m[1]] : 'Eso es'; return `${d} ${np}.`; };
 
 const S = { data: null, p: null, screen: 'new', round: null, sess: { w: new Set(), s: new Set() }, temp: {}, autoSpeak: false };
 const isF = () => !!(S.p && S.p.gender === 'f');
@@ -780,6 +916,10 @@ const CATS = [], WORDS = [];
 })();
 const PATH = [];
 for (let k = 0, more = true; more; k++) { more = false; for (const c of CATS) { const sl = c.words.slice(k * 8, k * 8 + 8); if (sl.length) { PATH.push(...sl); more = true; } } }
+const WIDX = {}; WORDS.forEach(w => { WIDX[w.es] = w.i; });
+const shortHe = he => String(he).split(/[;,(]/)[0].trim();
+const FLAGS_OK = (() => { try { const c = document.createElement('canvas'); c.width = c.height = 24; const x = c.getContext && c.getContext('2d'); if (!x) return true; x.textBaseline = 'top'; x.font = '20px sans-serif'; x.fillText('\u{1F1E6}\u{1F1F7}', 0, 0); const d = x.getImageData(0, 0, 24, 24).data; for (let i = 0; i < d.length; i += 4) if (d[i + 3] > 0 && (Math.abs(d[i] - d[i + 1]) > 24 || Math.abs(d[i + 1] - d[i + 2]) > 24)) return true; return false; } catch (e) { return true; } })();
+const fixEm = e => FLAGS_OK ? e : String(e).replace(/[\u{1F1E6}-\u{1F1FF}]{2}/gu, '🌍').replace(/\u{1F3F4}[\u{E0020}-\u{E007F}]+/gu, '🌍');
 const FEM_EL = new Set(['el agua', 'el águila', 'el ave', 'el ala', 'el hambre', 'el aula', 'el área', 'el alma', 'el hada', 'el hacha', 'el arpa', 'el ancla']);
 function genderTag(es) {
   const m = es.match(/^(el|la|los|las) /); if (!m) return '';
@@ -824,6 +964,150 @@ const BADGES = [
   ['pron25', '🎤', 'הגייה מושלמת', '25 פעמים 3 כוכבים בהגייה', p => p.st.pron3 >= 25],
   ['r10', '🎯', '10 סיבובים', 'סיימת 10 סיבובים', p => p.st.rounds >= 10],
   ['r50', '🚀', '50 סיבובים', 'סיימת 50 סיבובים', p => p.st.rounds >= 50],
+  ['memo1', '🃏', 'ממוטסט', 'סיימת משחק זיכרון', p => (p.st.memo || 0) >= 1],
+  ['speed15', '⏱️', 'מהירות!', '15 נקודות בנגד השעון', p => ((p.best || {}).speed || 0) >= 15],
+  ['album10', '📒', '10 פיגוריטס', 'אספת 10 מדבקות שונות', p => albumCount(p) >= 10],
+  ['legend', '👑', 'מדבקה אגדית', 'קיבלת מדבקה אגדית', p => STICKERS.some((x, i) => x[3] === 'L' && p.album && p.album[i])],
+  ['albumAll', '🌟', 'אלבום מלא!', 'אספת את כל המדבקות', p => albumCount(p) >= STICKERS.length],
+  ['ush', '🐧', 'סוף העולם', 'הגעת לאושואיה במסע', p => stationOf(p) >= JOURNEY.length - 1],
+  ['campeon', '🏆', '¡Campeones!', 'ניצחת בדו-קרב פנדלים', p => (p.st.cup || 0) >= 1],
+  ['chef', '👩‍🍳', 'שף ארגנטינאי', 'בישלת את כל המתכונים', p => Object.keys(p.recipes || {}).length >= RECIPES.length],
+  ['charla', '🧉', 'שיחות ארגנטינאיות', 'השלמת את כל השיחות', p => Object.keys(p.dlg || {}).length >= DIALOGS.length],
+  ['trivia', '🌞', 'מומחה לארגנטינה', '25 תשובות נכונות בטריוויה', p => (p.st.triv || 0) >= 25],
+];
+const STICKERS = [
+  ['🐶', 'el perro', 'כלב', 'C'], ['🐱', 'el gato', 'חתול', 'C'], ['🐴', 'el caballo', 'סוס', 'C'], ['🐮', 'la vaca', 'פרה', 'C'], ['🐷', 'el chancho', 'חזיר', 'C'], ['🐔', 'la gallina', 'תרנגולת', 'C'],
+  ['🐸', 'la rana', 'צפרדע', 'C'], ['🐢', 'la tortuga', 'צב', 'C'], ['🐟', 'el pez', 'דג', 'C'], ['🐝', 'la abeja', 'דבורה', 'C'], ['🦋', 'la mariposa', 'פרפר', 'C'], ['🐞', 'la vaquita de San Antonio', 'פרת משה רבנו', 'C'],
+  ['🍎', 'la manzana', 'תפוח', 'C'], ['🍌', 'la banana', 'בננה', 'C'], ['🍓', 'la frutilla', 'תות', 'C'], ['🍕', 'la pizza', 'פיצה', 'C'], ['🍦', 'el helado', 'גלידה', 'C'], ['🍪', 'la galletita', 'עוגייה', 'C'],
+  ['⚽', 'la pelota', 'כדור', 'C'], ['🚲', 'la bici', 'אופניים', 'C'], ['🎈', 'el globo', 'בלון', 'C'], ['🪁', 'el barrilete', 'עפיפון', 'C'], ['🌻', 'el girasol', 'חמנייה', 'C'], ['🌈', 'el arcoíris', 'קשת בענן', 'C'],
+  ['🦁', 'el león', 'אריה', 'R'], ['🐘', 'el elefante', 'פיל', 'R'], ['🦒', 'la jirafa', "ג'ירפה", 'R'], ['🐧', 'el pingüino', 'פינגווין', 'R'], ['🦜', 'el loro', 'תוכי', 'R'], ['🐬', 'el delfín', 'דולפין', 'R'],
+  ['🐋', 'la ballena', 'לווייתן', 'R'], ['🦊', 'el zorro', 'שועל', 'R'], ['🦉', 'el búho', 'ינשוף', 'R'], ['🐙', 'el pulpo', 'תמנון', 'R'], ['🦙', 'la llama', 'לאמה', 'R'], ['🦫', 'el carpincho', 'קפיברה', 'R'],
+  ['🐦', 'el hornero', 'הורנרו', 'R'], ['🚀', 'el cohete', 'רקטה', 'R'], ['🏰', 'el castillo', 'טירה', 'R'], ['🎸', 'la guitarra', 'גיטרה', 'R'], ['🌋', 'el volcán', 'הר געש', 'R'], ['🦖', 'el dinosaurio', 'דינוזאור', 'R'],
+  ['🧉', 'el mate', 'מאטה', 'L'], ['🥟', 'la empanada', 'אמפנדה', 'L'], ['🍫', 'el alfajor', 'אלפחור', 'L'], ['🍯', 'el dulce de leche', 'ריבת חלב', 'L'], ['💃', 'el tango', 'טנגו', 'L'],
+  ['🤠', 'el gaucho', "גאוצ'ו", 'L'], ['🏔️', 'el Aconcagua', 'אקונקגואה', 'L'], ['💦', 'las cataratas del Iguazú', 'מפלי איגואסו', 'L'], ['🧊', 'el glaciar Perito Moreno', 'קרחון פריטו מורנו', 'L'], ['🌞', 'el Sol de Mayo', 'שמש מאי', 'L'],
+  ['🏆', 'la Copa del Mundo', 'גביע העולם', 'L'], ['🚌', 'el colectivo', 'אוטובוס', 'C'], ['🥐', 'la medialuna', 'קרואסון', 'C'], ['🌭', 'el choripán', "צ'וריפן", 'C'],
+  ['🎂', 'la torta', 'עוגה', 'C'], ['🏟️', 'la cancha', 'מגרש', 'R'], ['🍖', 'el asado', 'על האש', 'R'], ['🧤', 'el arquero', 'שוער', 'R'],
+];
+const RAR = { C: ['רגילה', ''], R: ['נדירה ✨', 'rare'], L: ['אגדית 🌟', 'legend'] };
+const JOURNEY = [
+  ['🗼', 'Buenos Aires', 'הבירה של ארגנטינה. כאן מתחיל המסע, ליד האובליסק הלבן שבמרכז העיר.', 0],
+  ['🎨', 'La Boca', 'שכונה עם בתים צבעוניים ורחוב שבו רוקדים טנגו.', 10],
+  ['🏖️', 'Mar del Plata', 'עיר החופים. בארגנטינה הקיץ הוא בדצמבר ובינואר, ואז כולם באים לים!', 30],
+  ['⛰️', 'Córdoba', 'הרים ירוקים, נחלים ואלפחורים טעימים.', 60],
+  ['🌉', 'Rosario', 'עיר על נהר הפרנה, העיר שבה נולד ליונל מסי.', 100],
+  ['🍇', 'Mendoza', 'ארץ הכרמים, למרגלות הרי האנדים.', 160],
+  ['🏔️', 'Aconcagua', 'ההר הגבוה ביותר ביבשת אמריקה: כמעט 7,000 מטר!', 250],
+  ['🌵', 'Salta', 'קקטוסים ענקיים, הרים אדומים ואמפנדות מפורסמות.', 380],
+  ['🌈', 'Jujuy', 'ההר של שבעת הצבעים: פסים צבעוניים על ההר!', 550],
+  ['💦', 'Iguazú', 'מפלי איגואסו: מאות מפלים בתוך יער טרופי.', 800],
+  ['🍫', 'Bariloche', 'אגמים, שלג ושוקולד. בחורף גולשים כאן בסקי.', 1150],
+  ['🧊', 'El Calafate', 'קרחון פריטו מורנו: קיר קרח ענק שחתיכות ממנו נופלות למים.', 1700],
+  ['🐧', 'Ushuaia', 'אחת הערים הדרומיות בעולם, "סוף העולם", עם פינגווינים!', 2500],
+];
+const SLIDES = [
+  ['🦜', '¡Hola! Soy Loro', 'אני התוכי לורו מארגנטינה. איתי לומדים ספרדית כמו שמדברים בבואנוס איירס: מילים, משפטים ודקדוק. כמה דקות ביום, וצוברים כוכבים ⭐'],
+  ['📚', 'שלושה סוגי תרגול', ['🗣️ <b>מילים</b>: רואים מילה, שומעים את לורו ואומרים אותה בקול. המיקרופון נפתח לבד ובודק את ההגייה.', '💬 <b>משפטים</b>: לורו אומר משפט, ובוחרים את המילה שחסרה.', '🧩 <b>דקדוק</b>: בוחרים את הצורה הנכונה ומסדרים מילים למשפט.']],
+  ['🏆', 'משחקים ופרסים', ['☀️ <b>השמש היומית</b>: אוספים 30 כוכבים ביום ופותחים תיבת הפתעה.', '🃏 <b>אלבום פיגוריטס</b>: אחרי כל סיבוב מקבלים מדבקה. אפשר לאסוף את כולן?', '🗺️ <b>מסע בארגנטינה</b>: כל מילה מקדמת אותך במפה, מבואנוס איירס ועד אושואיה.', '🎮 <b>משחקים מארגנטינה</b>: פנדלים, שיחות בקיוסק ובגינה, מטבח ארגנטינאי, טריוויה, ממוטסט ונגד השעון.', '🐤 <b>דרגות</b>: מאפרוח ועד דרקון, וכל דרגה פותחת דמות חדשה.']],
+  ['👨‍👩‍👧', 'כמה מילים להורים', ['🎤 בסיבוב המילים המיקרופון נפתח לבד. כדאי לאשר אותו "תמיד", כדי שהדפדפן לא ישאל שוב.', '💾 ההתקדמות נשמרת לבד, ואפשר ליצור פרופיל לכל ילד.', '🔁 באותו סשן אף מילה ואף משפט לא חוזרים. מילים שהיו קשות חוזרות בימים הבאים.', '⚙️ בהגדרות להורים בוחרים קול, מהירות, תעתיק ועוד.']],
+];
+const NAVS = [['home', '🏠', 'בית'], ['games', '🎮', 'משחקים'], ['album', '🃏', 'אלבום'], ['map', '🗺️', 'מסע'], ['badges', '🏆', 'הישגים']];
+const RIVALS = [['Brasil', 'ברזיל', '🇧🇷'], ['Francia', 'צרפת', '🇫🇷'], ['Uruguay', 'אורוגוואי', '🇺🇾'], ['Alemania', 'גרמניה', '🇩🇪'], ['España', 'ספרד', '🇪🇸'], ['Italia', 'איטליה', '🇮🇹']];
+const DIALOGS = [
+  ['kiosco', '🏪', 'En el kiosco', 'בקיוסק', '👨‍🦳', [
+    ['¡Hola! ¿Qué querés?', 'שלום! מה {אתה רוצה|את רוצה}?', ['Un alfajor, por favor.', 'אלפחור, בבקשה.'], ['Tengo ocho años.', 'אני {בן|בת} שמונה.'], ['¡Buenas noches, chau!', 'לילה טוב, ביי!']],
+    ['¿De chocolate o de dulce de leche?', 'משוקולד או מריבת חלב?', ['De chocolate, por favor.', 'משוקולד, בבקשה.'], ['En la escuela.', 'בבית הספר.'], ['Me llamo Loro.', 'קוראים לי לורו.']],
+    ['Son mil pesos.', 'זה אלף פסו.', ['Acá tenés. ¡Gracias!', 'הנה, בבקשה. תודה!'], ['No me gusta el fútbol.', 'אני לא {אוהב|אוהבת} כדורגל.'], ['Hace frío.', 'קר.']],
+    ['¡Gracias a vos! ¡Chau!', 'תודה לך! ביי!', ['¡Chau, hasta luego!', 'ביי, להתראות!'], ['¿Cuántos años tenés?', 'בן כמה אתה?'], ['Quiero dormir.', 'אני רוצה לישון.']]]],
+  ['plaza', '🛝', 'En la plaza', 'בגינה', '👦', [
+    ['¡Hola! Me llamo Tomás. ¿Y vos, cómo te llamás?', 'היי! קוראים לי תומאס. ואיך קוראים לך?', ['Me llamo {N}.', 'קוראים לי {N}.'], ['Tengo hambre.', 'אני {רעב|רעבה}.'], ['Es un perro.', 'זה כלב.']],
+    ['¿Cuántos años tenés?', '{בן כמה אתה|בת כמה את}?', ['Tengo ocho años.', 'אני {בן|בת} שמונה.'], ['Hoy es lunes.', 'היום יום שני.'], ['Me gusta la pizza.', 'אני {אוהב|אוהבת} פיצה.']],
+    ['¿De dónde sos?', 'מאיפה {אתה|את}?', ['Soy de Israel.', 'אני מישראל.'], ['Tengo un gato.', 'יש לי חתול.'], ['Son las tres.', 'השעה שלוש.']],
+    ['¿Querés jugar a la pelota?', '{אתה רוצה|את רוצה} לשחק בכדור?', ['¡Dale, vamos!', 'בסדר, קדימה!'], ['Son mil pesos.', 'זה אלף פסו.'], ['Buenas noches.', 'לילה טוב.']]]],
+  ['abuela', '🧉', 'Mate con la abuela', 'מאטה עם סבתא', '👵', [
+    ['¡Hola, tesoro! ¿Cómo andás?', 'שלום, {חמוד שלי|חמודה שלי}! מה שלומך?', ['¡Muy bien, abuela! ¿Y vos?', 'טוב מאוד, סבתא! ומה שלומך?'], ['Tengo una mochila.', 'יש לי תיק.'], ['El auto es rojo.', 'המכונית אדומה.']],
+    ['Bien, bien. ¿Querés un mate?', 'טוב, טוב. {אתה רוצה|את רוצה} מאטה?', ['Sí, gracias, abuela.', 'כן, תודה, סבתא.'], ['Me llamo Loro.', 'קוראים לי לורו.'], ['Vamos al cine.', 'בואו נלך לקולנוע.']],
+    ['¿Está rico?', 'טעים?', ['¡Sí, está riquísimo!', 'כן, טעים מאוד!'], ['Está lloviendo.', 'יורד גשם.'], ['Es mi perro.', 'זה הכלב שלי.']],
+    ['¿Querés una medialuna también?', '{אתה רוצה|את רוצה} גם קרואסון?', ['¡Sí! Me encantan las medialunas.', 'כן! אני מאוד {אוהב|אוהבת} קרואסונים.'], ['Hoy es martes.', 'היום יום שלישי.'], ['La pelota es azul.', 'הכדור כחול.']]]],
+  ['colectivo', '🚌', 'En el colectivo', 'באוטובוס', '🧑‍✈️', [
+    ['¡Buen día! ¿Adónde vas?', 'בוקר טוב! לאן {אתה נוסע|את נוסעת}?', ['Voy al zoológico.', 'אני {נוסע|נוסעת} לגן החיות.'], ['Tengo un hermano.', 'יש לי אח.'], ['Me gusta el helado.', 'אני {אוהב|אוהבת} גלידה.']],
+    ['¿Tenés la tarjeta?', 'יש לך כרטיס?', ['Sí, acá está.', 'כן, הנה הוא.'], ['Es de chocolate.', 'זה משוקולד.'], ['Tengo sueño.', 'אני {עייף|עייפה}.']],
+    ['Agarrate fuerte, que frenamos.', '{תחזיק|תחזיקי} חזק, אנחנו בולמים.', ['¡Gracias por avisar!', 'תודה שאמרת!'], ['Quiero un alfajor.', 'אני רוצה אלפחור.'], ['Mi color favorito es el verde.', 'הצבע האהוב עליי הוא ירוק.']],
+    ['Llegamos al zoológico. ¡Que te diviertas!', 'הגענו לגן החיות. {תהנה|תהני}!', ['¡Gracias! ¡Chau!', 'תודה! ביי!'], ['¿Cómo te llamás?', 'איך קוראים לך?'], ['Hace calor.', 'חם.']]]],
+  ['cancha', '🏟️', 'En la cancha', 'במגרש הכדורגל', '🧑', [
+    ['¡Hola! ¿De qué equipo sos?', 'היי! בעד איזו קבוצה {אתה|את}?', ['¡Soy de Argentina!', 'אני בעד ארגנטינה!'], ['Tengo una bici.', 'יש לי אופניים.'], ['Es la una.', 'השעה אחת.']],
+    ['¡Mirá! ¿Quién patea el penal?', '{תסתכל|תסתכלי}! מי בועט את הפנדל?', ['Patea el número diez.', 'מספר עשר בועט.'], ['La sopa está fría.', 'המרק קר.'], ['Voy a dormir.', 'אני {הולך|הולכת} לישון.']],
+    ['¡Gol! ¿Viste?', 'גול! ראית?', ['¡Sí! ¡Qué golazo!', 'כן! איזה גול מדהים!'], ['No tengo lápiz.', 'אין לי עיפרון.'], ['Hoy es lunes.', 'היום יום שני.']],
+    ['¡Ganamos! ¿Cantamos juntos?', 'ניצחנו! נשיר יחד?', ['¡Dale! ¡Vamos, Argentina!', 'בסדר! קדימה, ארגנטינה!'], ['Mi gato es negro.', 'החתול שלי שחור.'], ['Tengo frío.', 'קר לי.']]]],
+  ['cumple', '🎂', 'El cumple de Sofía', 'יום ההולדת של סופיה', '👧', [
+    ['¡Hola! ¡Gracias por venir a mi cumple!', 'היי! תודה שבאת ליום ההולדת שלי!', ['¡Feliz cumpleaños, Sofía!', 'יום הולדת שמח, סופיה!'], ['Tengo sed.', 'אני {צמא|צמאה}.'], ['Es un libro.', 'זה ספר.']],
+    ['¿Querés torta?', '{אתה רוצה|את רוצה} עוגה?', ['Sí, por favor. ¡Qué rica!', 'כן, בבקשה. איזו טעימה!'], ['Voy en colectivo.', 'אני {נוסע|נוסעת} באוטובוס.'], ['Me llamo Pablo.', 'קוראים לי פבלו.']],
+    ['¿Cuántos años cumplo hoy? ¡Adiviná!', 'בת כמה אני היום? {תנחש|תנחשי}!', ['¿Diez años?', 'עשר?'], ['En la cocina.', 'במטבח.'], ['Es azul.', 'זה כחול.']],
+    ['¡Sí! ¡A soplar las velas!', 'כן! בואו נכבה את הנרות!', ['¡Que los cumplas feliz!', 'שתגיעי לשנים רבות בשמחה!'], ['Tengo un perro.', 'יש לי כלב.'], ['Buen día.', 'בוקר טוב.']]]],
+];
+const RECIPES = [
+  ['empanadas', '🥟', 'las empanadas', 'אמפנדות', [['🫓', 'la masa', 'בצק'], ['🥩', 'la carne', 'בשר'], ['🧅', 'la cebolla', 'בצל'], ['🥚', 'el huevo', 'ביצה'], ['🫒', 'las aceitunas', 'זיתים']]],
+  ['mate', '🧉', 'el mate', 'מאטה', [['🧉', 'el mate', 'כלי המאטה'], ['🌿', 'la yerba', 'עלי המאטה'], ['🫖', 'el termo', 'התרמוס'], ['♨️', 'el agua caliente', 'מים חמים']]],
+  ['alfajores', '🍪', 'los alfajores', 'אלפחורים', [['🍪', 'las galletitas', 'עוגיות'], ['🍯', 'el dulce de leche', 'ריבת חלב'], ['🍫', 'el chocolate', 'שוקולד'], ['🥥', 'el coco', 'קוקוס']]],
+  ['asado', '🍖', 'el asado', 'על האש', [['🌭', 'el chorizo', 'נקניק'], ['🪵', 'la leña', 'עצים להסקה'], ['🔥', 'el fuego', 'אש'], ['🍞', 'el pan', 'לחם'], ['🧂', 'la sal', 'מלח']]],
+  ['pizza', '🍕', 'la pizza con fainá', 'פיצה עם פאינה', [['🌾', 'la harina', 'קמח'], ['🍅', 'el tomate', 'עגבנייה'], ['🧀', 'la muzzarella', 'מוצרלה'], ['🌱', 'el orégano', 'אורגנו']]],
+  ['desayuno', '🥐', 'el desayuno argentino', 'ארוחת בוקר ארגנטינאית', [['🥐', 'las medialunas', 'קרואסונים'], ['🥛', 'la leche', 'חלב'], ['🧈', 'la manteca', 'חמאה'], ['🍓', 'la mermelada', 'ריבה'], ['🍊', 'el jugo de naranja', 'מיץ תפוזים']]],
+  ['frutas', '🥗', 'la ensalada de frutas', 'סלט פירות', [['🍌', 'la banana', 'בננה'], ['🍎', 'la manzana', 'תפוח'], ['🍇', 'las uvas', 'ענבים'], ['🍑', 'el durazno', 'אפרסק'], ['🥝', 'el kiwi', 'קיווי']]],
+];
+const TRIVIA = [
+  ['¿Cuál es la capital de Argentina?', 'מהי הבירה של ארגנטינה?', 'Buenos Aires', 'Córdoba', 'Mendoza', 'בואנוס איירס היא הבירה והעיר הגדולה ביותר בארגנטינה.'],
+  ['¿De qué colores es la bandera argentina?', 'באילו צבעים הדגל של ארגנטינה?', 'Celeste y blanco', 'Rojo y verde', 'Azul y amarillo', 'בדגל יש שני פסים תכולים ופס לבן באמצע, ועליו שמש זהובה: Sol de Mayo.'],
+  ['¿Qué se pone adentro del mate?', 'מה שמים בתוך כלי המאטה?', 'La yerba', 'El helado', 'La sopa', 'מאטה מכינים מעלים יבשים של צמח, ושותים בקש מתכת שנקרא bombilla.'],
+  ['¿Cuál es el baile típico de Buenos Aires?', 'מהו הריקוד המפורסם של בואנוס איירס?', 'El tango', 'El ballet', 'El rock', 'הטנגו נולד בבואנוס איירס לפני יותר ממאה שנה.'],
+  ['¿Cuál es la montaña más alta de América?', 'מהו ההר הגבוה ביותר ביבשת אמריקה?', 'El Aconcagua', 'El Everest', 'El Kilimanjaro', 'האקונקגואה, כמעט 7,000 מטר, נמצא בהרי האנדים ליד העיר מנדוסה.'],
+  ['¿Qué dulce argentino se hace con leche y azúcar?', 'איזה ממתק ארגנטינאי מכינים מחלב וסוכר?', 'El dulce de leche', 'El queso', 'La pizza', 'מבשלים חלב וסוכר שעות ארוכות, וממלאים בזה אלפחורים ועוגות.'],
+  ['¿Cómo se llama el hombre de campo que anda a caballo?', 'איך נקרא איש הכפר שרוכב על סוס בפמפה?', 'El gaucho', 'El pirata', 'El astronauta', "הגאוצ'ו רוכב על סוס, לובש פונצ'ו ושותה מאטה."],
+  ['¿Qué animal es el roedor más grande del mundo?', 'איזה בעל חיים הוא המכרסם הגדול בעולם?', 'El carpincho', 'El ratón', 'El conejo', 'הקפיברה (carpincho) יכולה לשקול יותר מ-50 קילו, והיא אוהבת לשחות.'],
+  ['¿Dónde están las cataratas del Iguazú?', 'איפה נמצאים מפלי איגואסו?', 'En el norte, en la selva', 'En el sur, en la nieve', 'En Buenos Aires', 'המפלים נמצאים בצפון-מזרח ארגנטינה, על הגבול עם ברזיל, בתוך יער טרופי.'],
+  ['¿Qué animal vive en la Patagonia, cerca del mar frío?', 'איזה בעל חיים חי בפטגוניה, ליד הים הקר?', 'El pingüino', 'El camello', 'El mono', 'בחופים של פטגוניה חיים מאות אלפי פינגווינים.'],
+  ['¿Cómo se llama la ciudad del fin del mundo?', 'איך נקראת "העיר שבסוף העולם"?', 'Ushuaia', 'Rosario', 'Salta', 'אושואיה נמצאת בטיירה דל פואגו, בדרום הרחוק, לא רחוק מאנטארקטיקה.'],
+  ['¿En qué ciudad nació Lionel Messi?', 'באיזו עיר נולד ליונל מסי?', 'Rosario', 'Madrid', 'Ushuaia', 'מסי נולד ברוסאריו, עיר על גדות נהר הפרנה.'],
+  ['¿En qué año ganó Argentina el Mundial de Qatar?', 'באיזו שנה זכתה ארגנטינה בגביע העולם בקטאר?', 'En 2022', 'En 1950', 'En 2010', 'בגמר בקטאר ניצחה ארגנטינה את צרפת בדו-קרב פנדלים.'],
+  ['¿Qué día es el Día de la Independencia argentina?', 'מתי חוגגים את יום העצמאות של ארגנטינה?', 'El 9 de julio', 'El 25 de diciembre', 'El 1 de enero', 'ב-9 ביולי 1816 הכריזה ארגנטינה על עצמאות, בעיר טוקומן.'],
+  ['¿Qué pájaro hace su nido de barro?', 'איזו ציפור בונה קן מבוץ?', 'El hornero', 'El loro', 'El pingüino', 'ההורנרו הוא הציפור הלאומית. הקן שלו נראה כמו תנור קטן, horno בספרדית.'],
+  ['¿Cuál es la flor nacional argentina?', 'מהו הפרח הלאומי של ארגנטינה?', 'El ceibo', 'La rosa', 'El girasol', 'פרח הסֵייבּוֹ אדום וגדל על עצים ליד נהרות.'],
+  ['¿Qué dicen en Argentina en vez de tú?', 'מה אומרים בארגנטינה במקום tú?', 'Vos', 'Yo', 'Ella', 'בארגנטינה אומרים vos: vos sos, vos tenés, vos querés.'],
+  ['¿Cómo le dicen al autobús en Buenos Aires?', 'איך קוראים לאוטובוס בבואנוס איירס?', 'El colectivo', 'El avión', 'El barco', 'בבואנוס איירס נוסעים בקולקטיבו, ויש גם רכבת תחתית: el subte.'],
+  ['¿Cómo se llama el metro de Buenos Aires?', 'איך נקראת הרכבת התחתית של בואנוס איירס?', 'El subte', 'El tranvía', 'El taxi', 'ה-subte נפתח ב-1913, והוא הרכבת התחתית הראשונה באמריקה הלטינית.'],
+  ['¿De qué color es la Casa Rosada?', 'באיזה צבע ה-Casa Rosada?', 'Rosa', 'Verde', 'Negra', 'ה-Casa Rosada, "הבית הוורוד", הוא מקום העבודה של נשיא ארגנטינה.'],
+  ['¿Cómo se llama la carne a la parrilla?', 'איך נקראת ארוחת הבשר על הגריל?', 'El asado', 'El sushi', 'La paella', 'בסופי שבוע משפחות רבות בארגנטינה מתאספות לאסאדו.'],
+  ['¿Qué tiene adentro una empanada?', 'מה יש בתוך אמפנדה?', 'Carne, queso o verdura', 'Helado', 'Jugo', 'אמפנדה היא מאפה ממולא, ובכל מחוז ממלאים אותה קצת אחרת.'],
+  ['¿Cómo se llama la región del sur con lagos y glaciares?', 'איך נקרא האזור הדרומי עם האגמים והקרחונים?', 'La Patagonia', 'La selva', 'El Sahara', 'פטגוניה היא אזור ענק עם מעט אנשים והרבה טבע.'],
+  ['¿Qué es el Perito Moreno?', 'מה זה פריטו מורנו?', 'Un glaciar', 'Un río', 'Un estadio', 'קרחון פריטו מורנו ענק, וחתיכות קרח נופלות ממנו למים ברעש גדול.'],
+  ['¿Cuál es la moneda de Argentina?', 'מהו המטבע של ארגנטינה?', 'El peso', 'El euro', 'El yen', 'המטבע של ארגנטינה נקרא פסו.'],
+  ['¿Cómo se llama el río muy ancho de Buenos Aires?', 'איך נקרא הנהר הרחב מאוד של בואנוס איירס?', 'El Río de la Plata', 'El Nilo', 'El Jordán', 'הריו דה לה פלטה כל כך רחב, שמבואנוס איירס לא רואים את הצד השני.'],
+  ['¿Qué montañas están en el oeste de Argentina?', 'אילו הרים נמצאים במערב ארגנטינה?', 'Los Andes', 'Los Alpes', 'El Himalaya', 'האנדים הם רכס ההרים הארוך בעולם.'],
+  ['¿Qué palabra usan en Argentina para decir: bueno, vamos?', 'באיזו מילה משתמשים בארגנטינה כדי לומר "בסדר, יאללה"?', '¡Dale!', '¡Hola!', '¡Chau!', 'את המילה dale שומעים בארגנטינה כל הזמן: כשמסכימים וכשמעודדים.'],
+  ['¿Qué es un alfajor?', 'מה זה אלפחור?', 'Dos galletitas con dulce de leche', 'Una fruta', 'Un auto', 'אלפחור הוא שתי עוגיות עם ריבת חלב באמצע, ולפעמים מצופה בשוקולד.'],
+  ['¿Qué se festeja el 25 de mayo?', 'מה חוגגים ב-25 במאי?', 'La Revolución de Mayo', 'La Navidad', 'El Año Nuevo', 'ב-25 במאי 1810 הוקמה הממשלה הראשונה של ארגנטינה. בבית הספר עושים טקס, ובבית אוכלים לוקרו.'],
+  ['¿Qué es el Obelisco?', 'מה זה האובליסק?', 'Un monumento de Buenos Aires', 'Un animal', 'Una comida', 'האובליסק הלבן עומד במרכז בואנוס איירס, ושם חוגגים ניצחונות בכדורגל.'],
+  ['¿Qué juntan los chicos en un álbum?', 'מה ילדים בארגנטינה אוספים באלבום?', 'Figuritas', 'Zapatos', 'Sopa', 'ילדים בארגנטינה אוספים פיגוריטס ומחליפים את הכפולות (repetidas) עם חברים, בדיוק כמו באלבום של לורו!'],
+];
+const ARG = [
+  ['¡Che!', 'היי! (פנייה לחבר)', 'Che, ¿vamos a la plaza?', 'היי, נלך לגינה?'],
+  ['¡Dale!', 'בסדר! יאללה!', '¿Jugamos? ¡Dale!', 'נשחק? יאללה!'],
+  ['re', 'ממש, מאוד', 'La torta está re rica.', 'העוגה ממש טעימה.'],
+  ['copado', 'מגניב', '¡Qué copado tu barrilete!', 'איזה עפיפון מגניב יש לך!'],
+  ['¡Bárbaro!', 'מצוין!', 'Mañana vamos al zoo. ¡Bárbaro!', 'מחר הולכים לגן החיות. מצוין!'],
+  ['piola', 'נחמד, מגניב', 'Tu primo es re piola.', 'בן הדוד שלך ממש נחמד.'],
+  ['la fiaca', 'עצלות', 'Hoy tengo fiaca.', 'היום יש לי עצלות.'],
+  ['el laburo', 'העבודה', 'Mi papá está en el laburo.', 'אבא שלי בעבודה.'],
+  ['el pibe', 'ילד, בחור', 'Ese pibe juega muy bien.', 'הילד הזה משחק טוב מאוד.'],
+  ['el bondi', 'אוטובוס (בסלנג)', 'Vamos en bondi al centro.', 'ניסע באוטובוס למרכז.'],
+  ['morfar', 'לאכול (בסלנג)', '¡A morfar, chicos!', 'ילדים, לאכול!'],
+  ['posta', 'באמת, בלי צחוק', '¿Posta? ¡No te creo!', 'באמת? לא מאמינים לך!'],
+  ['al toque', 'מיד, ברגע', 'Vengo al toque.', 'אני מגיע מיד.'],
+  ['un montón', 'המון', 'Tengo un montón de figuritas.', 'יש לי המון פיגוריטס.'],
+  ['¡Mirá vos!', 'וואו! מה {אתה אומר|את אומרת}!', 'Hay pingüinos en Argentina. ¡Mirá vos!', 'יש פינגווינים בארגנטינה. וואו!'],
+  ['¡Ni ahí!', 'בשום אופן!', '¿Bañarme con agua fría? ¡Ni ahí!', 'להתרחץ במים קרים? בשום אופן!'],
+  ['¡Qué macana!', 'איזה באסה!', 'Se rompió el globo. ¡Qué macana!', 'הבלון התפוצץ. איזה באסה!'],
+  ['bancar', 'לתמוך, להיות בשביל מישהו', 'Yo te banco, amigo.', 'אני איתך, חבר.'],
+  ['la birome', 'עט כדורי', '¿Me prestás una birome?', 'אפשר לשאול ממך עט?'],
+  ['¡Qué lindo!', 'כמה יפה!', '¡Qué lindo día para ir a la plaza!', 'איזה יום יפה ללכת לגינה!'],
 ];
 
 /* ---------- storage: this device + private cloud copy when available ---------- */
@@ -857,7 +1141,7 @@ async function cloudInit() {
       if (x.id && x.st) {
         remoteIds.add(x.id);
         const loc = S.data.profiles[x.id];
-        if (!loc || (x.updated || 0) > (loc.updated || 0)) { S.data.profiles[x.id] = JSON.parse(JSON.stringify(x)); changed = true; }
+        if (!loc || (x.updated || 0) > (loc.updated || 0)) { S.data.profiles[x.id] = migrate(JSON.parse(JSON.stringify(x))); changed = true; }
         else if ((loc.updated || 0) > (x.updated || 0)) Cloud.pend.add(loc.id);
       }
     }
@@ -904,7 +1188,13 @@ function tone(f, t0, d, type, v) {
     o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + d + 0.05);
   } catch (e) {}
 }
-const SFX = { ok() { tone(660, 0, .16); tone(990, .1, .28); }, bad() { tone(260, 0, .2, 'square', .05); tone(196, .13, .26, 'square', .05); }, tap() { tone(560, 0, .06, 'sine', .07); }, level() { [523, 659, 784, 1047].forEach((f, i) => tone(f, i * .12, .32)); } };
+const SFX = {
+  ok() { tone(523, 0, .12, 'triangle', .1); tone(659, .08, .12, 'triangle', .1); tone(784, .16, .2, 'triangle', .1); tone(1047, .26, .34, 'sine', .09); },
+  bad() { tone(392, 0, .2, 'triangle', .09); tone(311, .18, .22, 'triangle', .09); tone(247, .38, .38, 'triangle', .09); },
+  go() { tone(880, 0, .07, 'sine', .1); tone(1320, .07, .1, 'sine', .1); },
+  tap() { tone(560, 0, .06, 'sine', .07); },
+  level() { [523, 659, 784, 1047].forEach((f, i) => tone(f, i * .12, .32)); }
+};
 function confetti(n) {
   try { if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return; } catch (e) {}
   const fx = $('#fx'), em = ['⭐', '✨', '🎉', '☀️', '💙', '🦜'];
@@ -913,6 +1203,15 @@ function confetti(n) {
     s.style.left = rnd(100) + '%'; s.style.animationDelay = (Math.random() * .3).toFixed(2) + 's'; s.style.setProperty('--dx', (rnd(140) - 70) + 'px');
     fx.appendChild(s); setTimeout(() => s.remove(), 2000);
   }
+}
+let flashT = 0;
+function flash(ok, mark, mini) {
+  const f = $('#flash'); if (!f) return;
+  f.className = ''; f.innerHTML = ''; void f.offsetWidth;
+  f.className = (ok ? 'ok' : 'no') + ' on';
+  if (!mini) f.innerHTML = `<span>${mark || (ok ? '✓' : '✗')}</span>`;
+  clearTimeout(flashT); flashT = setTimeout(() => { f.className = ''; f.innerHTML = ''; }, 950);
+  try { if (navigator.vibrate) navigator.vibrate(ok ? 30 : [70, 60, 70]); } catch (e) {}
 }
 let toastT = 0;
 function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 2800); }
@@ -966,6 +1265,7 @@ function say(text, o) {
       u.rate = o.rate || S.data.settings.rate || 0.9; u.pitch = o.lang === 'he' ? 1 : 1.06;
       let done = false; const fin = () => { if (!done) { done = true; if (TTS.cur === id) { TTS.busy = false; TTS.endAt = Date.now(); } res(); } };
       u.onend = fin; u.onerror = fin; setTimeout(fin, 1500 + text.length * 130 / u.rate);
+      if (Live.rec && Live.duplex) Live.pause();
       TTS.cur = id; TTS.busy = true;
       try { ss.speak(u); } catch (e) { fin(); }
     };
@@ -996,7 +1296,7 @@ function listen() {
     rec.lang = S.data.settings.sr || 'es-AR'; rec.interimResults = false; rec.maxAlternatives = 5; rec.continuous = false;
     const alts = []; let err = null, fin = false, t = 0;
     const done = () => { if (fin) return; fin = true; clearTimeout(t); REC = null; res({ err, alts }); };
-    rec.onresult = e => { for (let i = 0; i < e.results.length; i++) { const r = e.results[i]; for (let j = 0; j < r.length; j++) if (r[j].transcript) alts.push(r[j].transcript); } };
+    rec.onresult = e => { for (let i = 0; i < e.results.length; i++) { const r = e.results[i]; for (let j = 0; j < r.length; j++) if (r[j].transcript) alts.push({ t: r[j].transcript, c: r[j].confidence || 0 }); } };
     rec.onerror = e => { err = (e && e.error) || 'error'; if (err === 'not-allowed' || err === 'service-not-allowed') srBlocked = true; };
     rec.onend = done;
     t = setTimeout(() => { try { rec.stop(); } catch (e) {} setTimeout(done, 700); }, 7000);
@@ -1005,12 +1305,14 @@ function listen() {
 }
 /* one microphone session for the whole round: opens by itself, asks permission once */
 const micMode = () => S.data.settings.mic || 'live';
-const ttsBusy = () => TTS.busy || Date.now() - TTS.endAt < 350;
+const ttsBusy = () => TTS.busy || Date.now() - TTS.endAt < 350 || !!(window.speechSynthesis && window.speechSynthesis.speaking);
+const UA = navigator.userAgent || '';
+const WEBKIT_ONLY = /iP(hone|ad|od)/.test(UA) || (/Macintosh/.test(UA) && navigator.maxTouchPoints > 1) || /^((?!chrome|chromium|android|crios|fxios|edg|opr).)*safari/i.test(UA);
 const Live = {
-  rec: null, want: false, okOnce: false, fast: 0, last: 0, seen: {}, done: {},
+  rec: null, want: false, okOnce: false, fast: 0, last: 0, seen: {}, done: {}, duplex: !WEBKIT_ONLY, paused: false,
   start() {
     if (!SRC || srBlocked) return false;
-    this.want = true;
+    this.want = true; this.paused = false;
     if (this.rec) return true;
     let rec;
     try { rec = new SRC(); } catch (e) { return false; }
@@ -1019,23 +1321,31 @@ const Live = {
     rec.onstart = () => { this.okOnce = true; };
     rec.onresult = e => {
       if (rec !== this.rec) return;
-      const R = S.round;
+      const R = S.round, now = Date.now();
       for (let i = e.resultIndex; i < e.results.length; i++) {
         const r = e.results[i];
-        if (!r || !r.length) continue;
-        if (!this.seen[i]) this.seen[i] = { r: R, idx: R ? R.idx : -1, echo: ttsBusy() || !(R && R.kind === 'w' && R.phase === 'listen') };
+        if (!r || !r.length || !r[0]) continue;
+        const tr = r[0].transcript || '';
+        if (this.done[i] !== undefined && (!r.isFinal || this.done[i] !== tr)) { delete this.done[i]; delete this.seen[i]; }
+        if (!this.seen[i]) {
+          const listening = !!(R && R.kind === 'w' && R.phase === 'listen');
+          const gate = this.duplex ? 450 : (r.isFinal ? 950 : 700);
+          this.seen[i] = { r: R, idx: R ? R.idx : -1, echo: !listening || ttsBusy() || now - TTS.endAt < gate || now - (R.listenAt || 0) < 200 };
+        }
         const sn = this.seen[i];
-        if (sn.echo || !R || sn.r !== S.round || sn.idx !== R.idx) continue;
-        if (!r.isFinal) { const el = $('#heardLive'); if (el) el.textContent = '👂 ' + r[0].transcript; continue; }
-        if (this.done[i]) continue;
-        this.done[i] = true;
-        const alts = []; for (let j = 0; j < r.length; j++) if (r[j] && r[j].transcript) alts.push(r[j].transcript);
-        if (alts.length) onHeard(alts);
+        if (!R || sn.r !== S.round || sn.idx !== R.idx || R.phase !== 'listen') continue;
+        if (!r.isFinal) { if (!sn.echo) { const el = $('#heardLive'); if (el) el.textContent = '👂 ' + tr; } continue; }
+        if (this.done[i] !== undefined) continue;
+        this.done[i] = tr;
+        const alts = []; for (let j = 0; j < r.length; j++) if (r[j] && r[j].transcript) alts.push({ t: r[j].transcript, c: r[j].confidence || 0 });
+        if (!alts.length) continue;
+        if (sn.echo && !repeatedAfterEcho(curWord().es, alts[0].t)) continue;
+        onHeard(alts);
       }
     };
     rec.onerror = e => {
       const err = (e && e.error) || 'error';
-      if (err === 'not-allowed' || err === 'service-not-allowed') { this.want = false; if (!this.okOnce) { srBlocked = true; toast('המיקרופון חסום כאן. אפשר להמשיך עם "אמרתי!"'); } }
+      if (err === 'not-allowed' || err === 'service-not-allowed') { this.want = false; if (!this.okOnce) { srBlocked = true; toast('המיקרופון חסום כאן. אפשר להמשיך עם "אמרתי"'); } }
       else if (err === 'language-not-supported' && S.data.settings.sr !== 'es-US') { S.data.settings.sr = 'es-US'; save(); }
       else if (err === 'audio-capture') { this.want = false; toast('לא נמצא מיקרופון במכשיר'); }
     };
@@ -1043,6 +1353,7 @@ const Live = {
       if (rec !== this.rec) return;
       this.rec = null;
       const R = S.round;
+      if (this.paused) return;
       if (!this.want || srBlocked || !R || R.kind !== 'w' || S.screen !== 'word') { if (S.screen === 'word') render(); return; }
       if (R.phase !== 'listen') return;
       this.fast = Date.now() - this.last < 1500 ? this.fast + 1 : 0;
@@ -1052,8 +1363,16 @@ const Live = {
     try { rec.start(); this.last = Date.now(); } catch (e) { this.rec = null; return false; }
     return true;
   },
-  stop() { this.want = false; const r = this.rec; this.rec = null; if (r) { try { r.onend = null; r.onresult = null; r.onerror = null; r.abort(); } catch (e) {} } },
+  pause() { this.paused = true; const r = this.rec; this.rec = null; if (r) { try { r.onend = null; r.onresult = null; r.onerror = null; r.abort(); } catch (e) {} } },
+  stop() { this.want = false; this.paused = false; const r = this.rec; this.rec = null; if (r) { try { r.onend = null; r.onresult = null; r.onerror = null; r.abort(); } catch (e) {} } },
 };
+try { if (navigator.permissions && navigator.permissions.query) navigator.permissions.query({ name: 'microphone' }).then(st => { const f = () => { if (st.state === 'granted') Live.duplex = true; }; f(); st.onchange = f; }).catch(() => {}); } catch (e) {}
+function repeatedAfterEcho(target, heard) {
+  const t = pnorm(target.replace(/^(el|la|los|las|un|una)\s+/i, '')), ws = pnorm(heard).split(' '), n = t.split(' ').length;
+  let hits = 0;
+  for (let i = 0; i + n <= ws.length; i++) if (simi(t, ws.slice(i, i + n).join(' ')) >= 0.8) { hits++; i += n - 1; }
+  return hits >= 2;
+}
 const NUMW = 'cero uno dos tres cuatro cinco seis siete ocho nueve diez once doce trece catorce quince dieciseis diecisiete dieciocho diecinueve veinte'.split(' ');
 function pnorm(s) {
   s = String(s).toLowerCase().replace(/\b\d+\b/g, m => +m <= 20 ? NUMW[+m] : +m === 100 ? 'cien' : +m === 1000 ? 'mil' : m);
@@ -1067,26 +1386,32 @@ function lev(a, b) {
   return prev[n];
 }
 const simi = (a, b) => 1 - lev(a, b) / Math.max(a.length, b.length, 1);
-function bestSim(target, alts) {
-  const t1 = pnorm(target), t2 = pnorm(target.replace(/^(el|la|los|las|un|una)\s+/i, ''));
+function judge(target, results) {
+  const full = pnorm(target), core = pnorm(target.replace(/^(el|la|los|las|un|una)\s+/i, ''));
+  const tw = full.split(' ').length, tlen = core.replace(/\s/g, '').length, short = tlen <= 2;
   let best = 0;
-  for (const alt of alts) {
-    const a = pnorm(alt), ws = a.split(' ');
-    for (const t of [t1, t2]) {
-      if (!t) continue;
-      best = Math.max(best, simi(t, a));
-      const n = t.split(' ').length;
-      for (let i = 0; i + n <= ws.length; i++) best = Math.max(best, simi(t, ws.slice(i, i + n).join(' ')));
+  results.forEach((r, k) => {
+    const a = pnorm(r.t || ''); if (!a) return;
+    const ws = a.split(' ');
+    let sc;
+    if (ws.length > tw + 2) sc = Math.min(0.5, Math.max(simi(full, a), simi(core, a)));
+    else if (short) { sc = ws.every(x => x === core || x === full) ? 1 : Math.max(simi(full, a), simi(core, a)) * 0.6; if (r.c > 0 && r.c < 0.4) sc = Math.min(sc, 0.6); }
+    else {
+      sc = Math.max(simi(full, a), simi(core, a));
+      for (const t of [full, core]) { const n = t.split(' ').length; for (let i = 0; i + n <= ws.length; i++) sc = Math.max(sc, simi(t, ws.slice(i, i + n).join(' '))); }
     }
-  }
-  return best;
+    if (k > 0) sc -= 0.06;
+    best = Math.max(best, sc);
+  });
+  return { sim: best, tlen };
 }
+function starsFor(j) { const need = j.tlen <= 4 ? 0.85 : j.tlen <= 7 ? 0.75 : 0.7; return j.sim >= Math.max(0.9, need + 0.1) ? 3 : j.sim >= need ? 2 : j.sim >= need - 0.25 ? 1 : 0; }
 
 /* ---------- game logic ---------- */
 function newProfile(name, gender, avatar) {
   const id = Date.now().toString(36) + rnd(46656).toString(36);
   const p = { id, name, gender, avatar, created: Date.now(), updated: Date.now(), stars: 0, streak: 0, lastDay: 0, dayStars: 0, w: {}, m2: {}, m3: {}, st: { rounds: 0, perfect: 0, combo: 0, pron3: 0, c2: 0, c3: 0 }, badges: {} };
-  S.data.profiles[id] = p; S.data.current = id; S.p = p; save(); return p;
+  migrate(p); S.data.profiles[id] = p; S.data.current = id; S.p = p; save(); return p;
 }
 function updateWord(w, ok) {
   const p = S.p, d = dayNum(), r = p.w[w.es] || [0, d, 0, 0];
@@ -1101,7 +1426,7 @@ function addStars(n) {
   p.stars += n; p.dayStars += n;
   if (S.round) S.round.stars += n;
   const after = lvOf(p.stars);
-  if (after > before) { if (S.round) S.round.lvUp = after; setTimeout(() => { SFX.level(); confetti(40); }, 300); toast(`עלית לדרגה חדשה: ${LEVELS[after][3]} ${LEVELS[after][1]}!`); }
+  if (after > before) { if (S.round) S.round.lvUp = after; setTimeout(() => { SFX.level(); confetti(40); }, 300); toast(`עלית לדרגה חדשה: ${LEVELS[after][3]} ${lri(LEVELS[after][1])}!`); }
 }
 function checkBadges() {
   const p = S.p;
@@ -1154,6 +1479,186 @@ function pickItems(part, n) {
   }
   return out;
 }
+function migrate(p) {
+  p.w = p.w || {}; p.m2 = p.m2 || {}; p.m3 = p.m3 || {}; p.badges = p.badges || {};
+  p.st = Object.assign({ rounds: 0, perfect: 0, combo: 0, pron3: 0, c2: 0, c3: 0, games: 0, memo: 0, cup: 0, triv: 0 }, p.st || {});
+  p.dlg = p.dlg || {}; p.recipes = p.recipes || {};
+  p.album = p.album || {}; p.best = p.best || {}; p.chestDay = p.chestDay || 0; if (p.station == null) p.station = 0;
+  return p;
+}
+function albumCount(p) { return Object.keys(p.album || {}).length; }
+function stationOf(p) { const lc = learnedCount(p); let i = 0; while (i + 1 < JOURNEY.length && lc >= JOURNEY[i + 1][3]) i++; return i; }
+function checkJourney() { const p = S.p, st = stationOf(p); if (st > (p.station || 0)) { p.station = st; return st; } return null; }
+function awardStickers(n) {
+  const p = S.p, out = [];
+  for (let k = 0; k < n; k++) {
+    const r = Math.random(), tier = r < 0.08 ? 'L' : r < 0.35 ? 'R' : 'C';
+    const pool = []; STICKERS.forEach((x, i) => { if (x[3] === tier) pool.push(i); });
+    const miss = pool.filter(i => !p.album[i]), src = miss.length && Math.random() < 0.6 ? miss : pool;
+    const i = src[rnd(src.length)], dup = !!p.album[i];
+    p.album[i] = (p.album[i] || 0) + 1;
+    if (dup) addStars(3);
+    out.push({ i, dup });
+  }
+  return out;
+}
+function gamePool(n, pred) {
+  const p = S.p, out = [], seenHe = new Set();
+  const ok = i => { const w = WORDS[i]; if (!w || S.sess.w.has(i) || out.includes(i) || (pred && !pred(w))) return false; const h = shortHe(w.he); if (!h || seenHe.has(h)) return false; seenHe.add(h); return true; };
+  const learned = shuffle(Object.keys(p.w).filter(k => p.w[k][2] > 0 && WIDX[k] != null).map(k => WIDX[k]));
+  for (const i of learned) { if (out.length >= n) break; if (ok(i)) out.push(i); }
+  for (const i of PATH) { if (out.length >= n) break; if (ok(i)) out.push(i); }
+  return out;
+}
+function startMemo() {
+  const ids = gamePool(6, w => w.es.length <= 16 && shortHe(w.he).length <= 16 && !/^[¿¡]/.test(w.es));
+  if (ids.length < 3) { toast('אין מספיק מילים חדשות להיום 🙂'); return; }
+  ids.forEach(i => S.sess.w.add(i));
+  const cards = [];
+  ids.forEach((i, k) => { cards.push({ k, i, side: 'es', open: false, done: false }); cards.push({ k, i, side: 'he', open: false, done: false }); });
+  S.round = { kind: 'memo', cards: shuffle(cards), first: -1, lock: false, moves: 0, found: 0, pairs: ids.length, stars: 0 };
+  go('memo');
+}
+function endMemo(R) {
+  if (S.round !== R) return;
+  const p = S.p, bonus = R.moves <= R.pairs + 2 ? 4 : R.moves <= R.pairs * 2 ? 2 : 0;
+  p.st.memo = (p.st.memo || 0) + 1; p.st.games = (p.st.games || 0) + 1;
+  const record = !p.best.memo || R.moves < p.best.memo; if (record) p.best.memo = R.moves;
+  addStars(R.pairs + bonus);
+  const stickers = awardStickers(1);
+  checkBadges(); save(); SFX.level(); confetti(40);
+  S.gsum = { em: '🃏', title: '¡Ganaste!', sub: `כל ${R.pairs} הזוגות נמצאו ב-${R.moves} מהלכים`, stars: R.stars, record, stickers, again: 'memo' };
+  S.round = null; go('gsum');
+}
+function startSpeed() {
+  const R = { kind: 'speed', end: Date.now() + 60000, score: 0, combo: 0, stars: 0, q: null, lock: false };
+  S.round = R; nextSpeed(); if (S.round !== R) return;
+  go('speed'); say(WORDS[R.q.i].es);
+  R.timer = setInterval(() => {
+    if (S.round !== R) { clearInterval(R.timer); return; }
+    const left = Math.max(0, R.end - Date.now()), bar = $('#tbar'), sec = $('#tsec');
+    if (bar) bar.style.width = (left / 600) + '%';
+    if (sec) sec.textContent = Math.ceil(left / 1000);
+    if (left <= 0) endSpeed(R);
+  }, 200);
+}
+function nextSpeed() {
+  const R = S.round, ids = gamePool(1, w => shortHe(w.he).length <= 24);
+  if (!ids.length) { endSpeed(R); return; }
+  const i = ids[0]; S.sess.w.add(i);
+  const right = shortHe(WORDS[i].he), opts = [right];
+  for (let k = 0; k < 80 && opts.length < 4; k++) { const x = shortHe(WORDS[rnd(WORDS.length)].he); if (x && x.length <= 24 && !opts.includes(x)) opts.push(x); }
+  R.q = { i, right, opts: shuffle(opts), pick: -1 }; R.lock = false;
+}
+function endSpeed(R) {
+  if (!R || R.ended) return; R.ended = true; clearInterval(R.timer);
+  if (S.round !== R) return;
+  const p = S.p, record = R.score > (p.best.speed || 0);
+  if (record) p.best.speed = R.score;
+  p.st.games = (p.st.games || 0) + 1;
+  const stars = R.score + (record && R.score > 0 ? 5 : 0);
+  if (stars) addStars(stars);
+  const stickers = awardStickers(R.score >= 15 ? 2 : 1);
+  checkBadges(); save(); SFX.level(); confetti(40);
+  S.gsum = { em: '⏱️', title: '¡Se terminó el tiempo!', sub: `${R.score} נקודות בדקה אחת`, stars: R.stars, record, stickers, again: 'speed' };
+  S.round = null; go('gsum');
+}
+const fillN = t => String(t).replace(/\{N\}/g, S.p ? S.p.name : '');
+function startPen() {
+  const R = { kind: 'pen', rv: pick(RIVALS), ku: 0, kt: 0, us: 0, them: 0, kU: [], kT: [], stars: 0, q: null, lock: false, anim: '', com: null };
+  S.round = R; nextPen(); if (S.round !== R) return;
+  go('pen'); if (R.q.shoot) say(WORDS[R.q.i].es);
+}
+function nextPen() {
+  const R = S.round, ids = gamePool(1, w => shortHe(w.he).length <= 22 && w.es.length <= 22);
+  if (!ids.length) { endPen(R, R.us > R.them ? 'win' : R.us < R.them ? 'lose' : 'tie'); return; }
+  const i = ids[0]; S.sess.w.add(i);
+  const w = WORDS[i], shoot = R.ku === R.kt, right = shoot ? shortHe(w.he) : capFirst(w.es), opts = [right];
+  for (let k = 0; k < 80 && opts.length < 3; k++) { const x = WORDS[rnd(WORDS.length)], v = shoot ? shortHe(x.he) : capFirst(x.es); if (v && v.length <= 22 && !opts.includes(v) && shortHe(x.he) !== shortHe(w.he)) opts.push(v); }
+  R.q = { i, shoot, right, opts: shuffle(opts), pick: -1 }; R.lock = false; R.anim = ''; R.com = null;
+}
+function penResult(R) {
+  const { ku, kt, us, them } = R;
+  if (ku <= 5 && kt <= 5) {
+    if (us > them + (5 - kt)) return 'win';
+    if (them > us + (5 - ku)) return 'lose';
+    if (ku === 5 && kt === 5 && us !== them) return us > them ? 'win' : 'lose';
+    return null;
+  }
+  if (ku === kt && us !== them) return us > them ? 'win' : 'lose';
+  if (ku === kt && ku >= 8) return 'tie';
+  return null;
+}
+function endPen(R, res) {
+  if (!R || R.ended || S.round !== R) return; R.ended = true;
+  const p = S.p; let stickers;
+  if (res === 'win') {
+    p.st.cup = (p.st.cup || 0) + 1; addStars(10);
+    const cup = STICKERS.findIndex(x => x[1] === 'la Copa del Mundo');
+    if (cup >= 0 && !p.album[cup]) { p.album[cup] = 1; stickers = [{ i: cup, dup: false }]; } else stickers = awardStickers(1);
+  } else { addStars(res === 'tie' ? 4 : 2); stickers = awardStickers(1); }
+  p.st.games = (p.st.games || 0) + 1;
+  checkBadges(); save(); SFX.level(); confetti(res === 'win' ? 60 : 20);
+  const T = { win: ['¡Campeones del mundo!', `ארגנטינה ניצחה את ${R.rv[1]} ${R.us}-${R.them}! 🏆`, '🏆'], lose: ['¡Casi! La próxima ganamos', `${R.rv[1]} ניצחה ${R.them}-${R.us}. בפעם הבאה!`, '⚽'], tie: ['¡Empate!', `${R.us}-${R.them}: תיקו, וכולם חברים`, '🤝'] }[res];
+  S.gsum = { em: T[2], title: T[0], sub: T[1], stars: R.stars, stickers, again: 'pen' };
+  S.round = null; go('gsum');
+  wait(600).then(() => say(res === 'win' ? '¡Vamos, Argentina! ¡Campeones del mundo!' : res === 'tie' ? '¡Empate! ¡Buen partido!' : '¡Casi! La próxima ganamos.'));
+}
+function startDlg(id) {
+  const d = DIALOGS.find(x => x[0] === id); if (!d || S.sess.s.has('dlg:' + id)) return;
+  S.sess.s.add('dlg:' + id);
+  const R = { kind: 'dlg', d, step: 0, log: [], opts: [], bad: [], hint: false, first: 0, stars: 0, waiting: false };
+  S.round = R; dlgNpc(R); go('dlg'); say(R.log[0].es);
+}
+function dlgNpc(R) {
+  const st = R.d[5][R.step];
+  R.log.push({ who: 'npc', es: fillN(st[0]), he: st[1] });
+  R.opts = shuffle([{ es: fillN(st[2][0]), he: fillN(st[2][1]), ok: true }, { es: st[3][0], he: st[3][1] }, { es: st[4][0], he: st[4][1] }]);
+  R.bad = []; R.hint = false; R.waiting = false;
+}
+function endDlg(R) {
+  if (S.round !== R) return;
+  const p = S.p; p.dlg[R.d[0]] = 1; p.st.games = (p.st.games || 0) + 1;
+  addStars(R.first * 2 + 2);
+  const stickers = awardStickers(1); checkBadges(); save(); SFX.level(); confetti(40);
+  S.gsum = { em: R.d[1], title: '¡Qué buena charla!', sub: `${R.first} מתוך ${R.d[5].length} תשובות נכונות בניסיון הראשון`, stars: R.stars, stickers, again: 'dlgs' };
+  S.round = null; go('gsum');
+}
+function startCook(id) {
+  const r = RECIPES.find(x => x[0] === id); if (!r || S.sess.s.has('cook:' + id)) return;
+  S.sess.s.add('cook:' + id);
+  const others = []; RECIPES.forEach(x => { if (x !== r) x[4].forEach(g => others.push(g)); });
+  const counter = shuffle(r[4].concat(shuffle(others).slice(0, Math.max(0, 8 - r[4].length))));
+  const R = { kind: 'cook', r, order: shuffle(r[4].slice()), idx: 0, counter: counter.map(g => ({ g, used: false, bad: false })), first: 0, miss: 0, stars: 0, lock: false };
+  S.round = R; go('cook');
+  say(`¡Hoy preparamos ${r[2]}!`).then(() => wait(250)).then(() => cookAsk(R));
+}
+function cookAsk(R) { if (!R || S.round !== R || R.idx >= R.order.length) return; say(`Necesito ${R.order[R.idx][1]}.`); }
+function endCook(R) {
+  if (S.round !== R) return;
+  const p = S.p; p.recipes[R.r[0]] = 1; p.st.games = (p.st.games || 0) + 1;
+  addStars(R.first * 2 + 2);
+  const stickers = awardStickers(1); checkBadges(); save(); SFX.level(); confetti(50);
+  S.gsum = { em: R.r[1], title: '¡Qué rico!', sub: `הכנו ${R.r[3]}! ${R.first} מתוך ${R.order.length} מצרכים נמצאו כבר בניסיון הראשון`, stars: R.stars, stickers, again: 'cooks' };
+  S.round = null; go('gsum');
+}
+function startTriv() {
+  const avail = TRIVIA.map((t, i) => i).filter(i => !S.sess.s.has('tv:' + i));
+  if (avail.length < 3) { toast('שאלות הטריוויה של היום נגמרו! מחר יהיו שוב 🙂'); return; }
+  const items = shuffle(avail).slice(0, 8); items.forEach(i => S.sess.s.add('tv:' + i));
+  S.round = { kind: 'triv', items, idx: 0, res: [], stars: 0 };
+  prepTriv(); go('triv'); sayTriv();
+}
+function prepTriv() { const R = S.round, t = TRIVIA[R.items[R.idx]]; R.opts = shuffle([t[2], t[3], t[4]]); R.pick = -1; R.ans = null; }
+function sayTriv() { const R = S.round; if (R && R.kind === 'triv') say(TRIVIA[R.items[R.idx]][0]); }
+function endTriv(R) {
+  if (S.round !== R) return;
+  const ok = R.res.filter(Boolean).length; S.p.st.games = (S.p.st.games || 0) + 1;
+  const stickers = awardStickers(ok >= 6 ? 2 : 1); checkBadges(); save(); SFX.level(); confetti(40);
+  S.gsum = { em: '🌞', title: ok >= 6 ? '¡Sabés un montón!' : '¡Muy bien!', sub: `${ok} תשובות נכונות מתוך ${R.items.length}`, stars: R.stars, stickers, again: 'triv' };
+  S.round = null; go('gsum');
+}
+const argOfDay = () => ARG[dayNum() % ARG.length];
 function startQRound(part) {
   const items = pickItems(part, +S.data.settings.len || 10);
   if (!items.length) { toast('כל המשפטים כבר הופיעו היום! 🎉 מחר יהיו עוד'); return; }
@@ -1167,7 +1672,7 @@ function mkWO(it) {
   return { placed: [], bank: bank.map(w => ({ w, used: false })) };
 }
 function prepItem() {
-  const R = S.round; R.ans = null; R.ok = null; R.pick = -1; R.phase = R.kind === 'w' ? 'intro' : 'ready'; R.tries = 0; R.last = null; R.msg = ''; R.quiet = false; clearTimeout(R.advT); clearTimeout(R.quietT);
+  const R = S.round; R.ans = null; R.ok = null; R.pick = -1; R.phase = R.kind === 'w' ? 'intro' : 'ready'; R.tries = 0; R.last = null; R.msg = ''; R.quiet = false; clearTimeout(R.advT); clearTimeout(R.quietT); R.fx = ''; R.quietN = 0;
   if (R.kind === 'q') { const it = R.items[R.idx]; if (it.type === 'wo') R.wo = mkWO(it); else R.opts = shuffle(it.opts.slice()); }
 }
 function finalizeWord(stars) {
@@ -1192,10 +1697,11 @@ function answer(ok, pickIdx) {
     const bonus = R.combo % 5 === 0;
     addStars(bonus ? 2 : 1);
     if (bonus) { confetti(30); toast(`🔥 ${R.combo} ברצף! כוכב בונוס`); } else confetti(12);
-    R.msg = pick(['¡Muy bien!', '¡Genial!', '¡Bárbaro!', '¡Excelente!', '¡Bien hecho!']) + ' ' + pick(['כל הכבוד!', 'מעולה!', 'יפה מאוד!', 'נהדר!']);
+    R.praise = pick(PRAISE); R.heMsg = pick(['כל הכבוד!', 'מעולה!', 'יפה מאוד!', 'נהדר!']); R.msg = R.praise + ' ' + R.heMsg;
   } else { R.combo = 0; delete p[mk][it.id]; SFX.bad(); }
   checkBadges(); save(); render();
-  const i0 = R.idx; setTimeout(() => { if (S.round === R && R.idx === i0) say(it.full); }, 350);
+  const i0 = R.idx; flash(ok);
+  setTimeout(() => { if (S.round !== R || R.idx !== i0) return; say(ok ? R.praise : 'No. Escuchá la respuesta correcta.').then(() => { if (S.round === R && R.idx === i0) say(it.full); }); }, 650);
 }
 function nextItem() {
   const R = S.round; if (!R) return;
@@ -1207,62 +1713,94 @@ function nextItem() {
 function endRound() {
   const R = S.round, p = S.p, n = R.items.length, ok = R.res.filter(Boolean).length;
   p.st.rounds++; if (ok === n && n >= 5) p.st.perfect++;
+  R.stickers = awardStickers(ok === n && n >= 5 ? 2 : 1);
+  R.newStation = checkJourney();
   checkBadges(); save();
-  if (ok === n) { SFX.level(); confetti(50); }
+  if (ok === n || R.newStation != null) { SFX.level(); confetti(50); }
   go('summary');
 }
 async function doListen() {
   const R = S.round; if (!R || R.phase === 'listening') return;
-  hush(); R.phase = 'listening'; render();
+  hush(); R.phase = 'listening'; R.fx = ''; render();
   const r = await listen();
   if (S.round !== R) return;
   if (!r.alts.length) {
-    R.phase = R.last ? 'result' : 'ready';
+    R.phase = 'ready'; R.quiet = !r.err || r.err === 'no-speech';
     if (r.err === 'language-not-supported' && S.data.settings.sr !== 'es-US') { S.data.settings.sr = 'es-US'; save(); toast('עברתי לזיהוי ספרדית כללית. נסו שוב 🎤'); }
-    else if (srBlocked) toast('המיקרופון חסום כאן. אפשר להמשיך עם "אמרתי!"');
+    else if (srBlocked) toast('המיקרופון חסום כאן. אפשר להמשיך עם "אמרתי"');
     else if (r.err && r.err !== 'no-speech' && r.err !== 'aborted') toast('הזיהוי לא עבד הפעם. נסו שוב.');
-    else toast('לא שמעתי. מקרבים את המיקרופון ומנסים שוב 🎤');
-    render(); return;
+    render();
+    if (R.quiet) { SFX.bad(); wait(750).then(() => { if (S.round === R) say('No te escuché. Probá otra vez.'); }); }
+    return;
   }
-  const sim = bestSim(curWord().es, r.alts);
-  const stars = sim >= 0.85 ? 3 : sim >= 0.65 ? 2 : sim >= 0.45 ? 1 : 0;
-  R.tries++; R.last = { stars, heard: r.alts[0] };
-  const fin = stars >= 2 || R.tries >= 3;
-  if (fin) finalizeWord(stars); else SFX.bad();
-  R.phase = 'result'; render();
-  if (fin) scheduleNext();
-  else if (micMode() === 'auto') { const idx = R.idx; setTimeout(() => { if (S.round === R && R.idx === idx && R.phase === 'result' && R.res[idx] === undefined) doListen(); }, 1600); }
+  attempt(r.alts);
+}
+const PRAISE = ['¡Muy bien!', '¡Excelente!', '¡Bárbaro!', '¡Genial!', '¡Bien ahí!'];
+const RETRY = ['Casi. Escuchá otra vez.', 'Probá de nuevo. Escuchá bien.', 'Otra vez. Escuchá con atención.'];
+function attempt(alts) {
+  const R = S.round, w = curWord(), idx = R.idx, j = judge(w.es, alts), stars = starsFor(j);
+  R.tries++; R.last = { stars, heard: alts[0].t }; R.quiet = false; R.quietN = 0; clearTimeout(R.quietT);
+  if (stars >= 2) {
+    finalizeWord(stars); R.phase = 'result'; R.fx = 'good'; render(); flash(true, stars === 3 ? '⭐' : '✓');
+    wait(550).then(() => S.round === R && R.idx === idx ? say(stars === 3 ? '¡Perfecto!' : pick(PRAISE)) : null).then(() => { if (S.round === R && R.idx === idx) scheduleNext(); });
+    return;
+  }
+  SFX.bad(); R.fx = 'bad'; flash(false);
+  if (R.tries >= 3) {
+    finalizeWord(stars); R.phase = 'result'; render();
+    wait(750).then(() => S.round === R && R.idx === idx ? say('La palabra es:') : null).then(() => { if (S.round === R && R.idx === idx) return say(w.es, { rate: 0.65 }); });
+    return;
+  }
+  R.phase = 'retry'; render();
+  wait(750).then(() => S.round === R && R.idx === idx && R.phase === 'retry' ? say(pick(RETRY)) : null).then(() => { if (S.round === R && R.idx === idx && R.phase === 'retry') return say(w.es, { rate: 0.65 }); }).then(() => {
+    if (S.round !== R || R.idx !== idx || R.phase !== 'retry') return;
+    if (micMode() === 'tap') { R.phase = 'result'; render(); return; }
+    openListen();
+  });
 }
 function scheduleNext() {
-  const R = S.round, idx = R.idx;
+  const R = S.round; if (!R) return;
+  const idx = R.idx;
   if (!S.data.settings.autoNext || !R.res[idx]) return;
-  clearTimeout(R.advT); R.advT = setTimeout(() => { if (S.round === R && R.idx === idx && S.screen === 'word') nextItem(); }, 1800);
+  clearTimeout(R.advT); R.advT = setTimeout(() => { if (S.round === R && R.idx === idx && S.screen === 'word') nextItem(); }, 900);
 }
 function onHeard(alts) {
   const R = S.round; if (!R || R.kind !== 'w' || R.phase !== 'listen' || R.res[R.idx] !== undefined) return;
-  const sim = bestSim(curWord().es, alts), stars = sim >= 0.85 ? 3 : sim >= 0.65 ? 2 : sim >= 0.45 ? 1 : 0;
-  R.tries++; R.last = { stars, heard: alts[0] || '' }; R.quiet = false;
-  if (stars >= 2 || R.tries >= 3) { finalizeWord(stars); R.phase = 'result'; render(); scheduleNext(); }
-  else { SFX.bad(); armQuiet(); render(); }
+  attempt(alts);
 }
-function armQuiet() { const R = S.round, idx = R.idx; clearTimeout(R.quietT); R.quietT = setTimeout(() => { if (S.round === R && R.idx === idx && R.phase === 'listen') { R.quiet = true; render(); } }, 9000); }
+function armQuiet() {
+  const R = S.round, idx = R.idx; clearTimeout(R.quietT);
+  R.quietT = setTimeout(() => {
+    if (S.round !== R || R.idx !== idx || R.phase !== 'listen') return;
+    R.quiet = true; R.quietN = (R.quietN || 0) + 1;
+    if (R.quietN > 2) { render(); return; }
+    R.phase = 'intro'; render(); SFX.bad();
+    wait(750).then(() => S.round === R && R.idx === idx ? say('No te escuché. ¡Decilo otra vez!') : null).then(() => { if (S.round === R && R.idx === idx) return say(curWord().es); }).then(() => { if (S.round === R && R.idx === idx && R.phase === 'intro') openListen(); });
+  }, 8000);
+}
 function introWord() {
   const R = S.round; if (!R || R.kind !== 'w') return;
   const idx = R.idx; R.phase = 'intro'; render();
   say(curWord().es).then(() => { if (S.round === R && R.idx === idx && R.phase === 'intro') openListen(); });
 }
 function openListen() {
-  const R = S.round, m = micMode();
+  const R = S.round, m = micMode(), idx = R.idx;
+  R.fx = '';
   if (m === 'live' && SRC && !srBlocked) {
     if (Live.want && !Live.rec) Live.start();
-    if (Live.rec) { R.phase = 'listen'; R.quiet = false; armQuiet(); render(); return; }
+    if (Live.rec) { R.phase = 'listen'; R.listenAt = Date.now(); armQuiet(); render(); SFX.go(); return; }
   }
   R.phase = 'ready'; render();
-  if (m === 'auto' && SRC && !srBlocked) doListen();
+  if (m === 'auto' && SRC && !srBlocked) setTimeout(() => { if (S.round === R && R.idx === idx && R.phase === 'ready') doListen(); }, 400);
 }
-
+function replay(text, o) {
+  const R = S.round; if (!R || R.kind !== 'w') return say(text, o);
+  const idx = R.idx, wasListen = R.phase === 'listen';
+  if (wasListen) { R.phase = 'intro'; clearTimeout(R.quietT); render(); }
+  return say(text, o).then(() => { if (wasListen && S.round === R && R.idx === idx && R.phase === 'intro') openListen(); });
+}
 /* ---------- views ---------- */
-const loroSays = t => `<span class="loro" aria-hidden="true">🦜</span><span class="bubble">${esc(t)}</span>`;
+const loroSays = (t, happy, html) => `<span class="loro${happy ? ' yay' : ''}" aria-hidden="true">🦜</span><span class="bubble">${html ? t : esc(t)}</span>`;
 function sunRing(pct, face) {
   const n = 16, lit = Math.round(pct * n); let rays = '';
   for (let i = 0; i < n; i++) {
@@ -1282,51 +1820,56 @@ function roundBar() {
 function vHome() {
   const p = S.p, lv = lvOf(p.stars), L = LEVELS[lv], N = LEVELS[lv + 1], ts = todayStars(p), pct = Math.min(1, ts / GOAL);
   const prog = N ? Math.round(100 * (p.stars - L[0]) / (N[0] - L[0])) : 100;
+  const st = stationOf(p), J = JOURNEY[st], NJ = JOURNEY[st + 1], lc = learnedCount(p), chest = ts >= GOAL && p.chestDay !== dayNum();
   return `${topBar()}
   <section class="hero">${sunRing(pct, p.avatar)}
     <div class="hello">
       <h1 class="es" lang="es" dir="ltr">¡Hola, ${esc(p.name)}!</h1>
       <p>${pct >= 1 ? 'השמש של היום מלאה! ☀️ המטרה הושלמה' : `עוד ${GOAL - ts} ⭐ והשמש של היום מתמלאת`}</p>
-      <div class="lvl">${L[3]} <span class="es" lang="es">${L[1]}</span> <span class="muted">(${L[2]})</span></div>
-      ${N ? `<div class="bar" aria-hidden="true"><i style="width:${prog}%"></i></div><small class="muted">עוד ${N[0] - p.stars} ⭐ לדרגה ${N[3]} <span lang="es">${N[1]}</span></small>` : '<small>הגעת לדרגה הכי גבוהה! 🐉</small>'}
+      <div class="lvl">${L[3]} <span class="es" lang="es" dir="ltr">${L[1]}</span> <span class="muted">(${L[2]})</span></div>
+      ${N ? `<div class="bar" aria-hidden="true"><i style="width:${prog}%"></i></div><small class="muted">עוד ${N[0] - p.stars} ⭐ לדרגה ${N[3]} <span lang="es" dir="ltr">${N[1]}</span></small>` : '<small>הגעת לדרגה הכי גבוהה! 🐉</small>'}
     </div>
   </section>
+  ${chest ? '<button class="btn primary big chest" data-a="chest">🎁 השמש מלאה! פותחים את התיבה היומית</button>' : ''}
+  <button class="journey" data-a="nav" data-v="map"><span class="jem" aria-hidden="true">${J[0]}</span><span><b>המסע בארגנטינה: <span lang="es" dir="ltr">${J[1]}</span></b><small>${NJ ? `עוד ${NJ[3] - lc} מילים עד ${NJ[0]} <span lang="es" dir="ltr">${NJ[1]}</span>` : 'הגעת לסוף המסע! 🎉'}</small></span></button>
   <div class="modes">
     <button class="mode m1" data-a="words"><span class="ic" aria-hidden="true">🗣️</span><b>מילים</b><span class="ds">שומעים, קוראים ואומרים בקול</span><em>${fmt(learnedCount(p))} מתוך ${fmt(WORDS.length)} מילים</em></button>
     <button class="mode m2" data-a="start" data-v="2"><span class="ic" aria-hidden="true">💬</span><b>משפטים</b><span class="ds">משלימים משפט לפי המשמעות</span><em>${fmt(p.st.c2)} תשובות נכונות</em></button>
     <button class="mode m3" data-a="start" data-v="3"><span class="ic" aria-hidden="true">🧩</span><b>דקדוק</b><span class="ds">בונים משפטים נכונים</span><em>${fmt(p.st.c3)} תשובות נכונות</em></button>
   </div>
-  <div class="row"><button class="btn" data-a="badges">🏆 הישגים</button><button class="btn" data-a="settings">⚙️ להורים</button></div>`;
+  ${argCard()}${gstrip()}
+  <div class="row"><button class="btn" data-a="intro">❓ איך משחקים</button><button class="btn" data-a="settings">⚙️ להורים</button></div>`;
 }
 function vCats() {
   const p = S.p;
   return `${backBar('מילים')}
   <button class="btn primary big" data-a="wround" data-v="__path">▶️ ממשיכים במסלול</button>
   <p class="muted center" style="margin:18px 0 4px">או בוחרים נושא:</p>
-  <div class="cats">${CATS.map(c => { const n = c.words.length; let k = 0; for (const i of c.words) if (isLearned(p, WORDS[i])) k++; return `<button class="cat" data-a="wround" data-v="${esc(c.id)}"><span class="em" aria-hidden="true">${c.em}</span><b>${esc(c.name)}</b><small>${k} / ${n}</small><i class="mini"><u style="width:${Math.round(100 * k / n)}%"></u></i></button>`; }).join('')}</div>`;
+  <div class="cats">${CATS.map(c => { const n = c.words.length; let k = 0; for (const i of c.words) if (isLearned(p, WORDS[i])) k++; return `<button class="cat" data-a="wround" data-v="${esc(c.id)}"><span class="em" aria-hidden="true">${fixEm(c.em)}</span><b>${esc(c.name)}</b><small>${k} / ${n}</small><i class="mini"><u style="width:${Math.round(100 * k / n)}%"></u></i></button>`; }).join('')}</div>`;
 }
 const micMsg = () => !SRC ? 'בדפדפן הזה אין זיהוי דיבור (יש בכרום, אדג׳ וספארי). אומרים את המילה בקול ולוחצים "אמרתי!"' : 'המיקרופון חסום בחלון הזה. אפשר לאשר מיקרופון בדפדפן, או לומר בקול וללחוץ "אמרתי!"';
 function vSpeak() {
-  const R = S.round, fin = R.res[R.idx] !== undefined, last = R.idx + 1 >= R.items.length;
+  const R = S.round, w = curWord(), fin = R.res[R.idx] !== undefined, last = R.idx + 1 >= R.items.length;
   if (R.phase === 'listen' && !Live.rec) R.phase = 'ready';
   const nextBtn = `<button class="btn primary big" data-a="next">${last ? 'לסיכום 🏁' : 'הבא ←'}</button>`;
   const fbk = () => {
-    const s = R.last.stars;
-    const msg = R.last.self ? '¡Muy bien! יופי שאמרת בקול!' : s === 3 ? '¡Perfecto! הגייה מושלמת!' : s === 2 ? '¡Muy bien! יפה מאוד!' : s === 1 ? '¡Casi! כמעט! עוד פעם?' : 'ננסה שוב? מקשיבים ואומרים לאט';
-    return `<div class="res"><div class="stars" aria-label="${s} כוכבים">${'⭐'.repeat(s)}${'<span class="off">⭐</span>'.repeat(3 - s)}</div><p class="msg">${msg}</p>${R.last.heard ? `<p class="heard">שמעתי: <span lang="es" dir="ltr">“${esc(R.last.heard)}”</span></p>` : ''}</div>`;
+    const L = R.last, s = L.stars, good = s >= 2;
+    const msg = L.self ? 'סומן כמתורגל 👍 (בלי מיקרופון אין בדיקת הגייה)' : s === 3 ? `✅ ${esb('¡Perfecto!')} הגייה מושלמת!` : s === 2 ? `✅ ${esb('¡Muy bien!')} יפה מאוד!` : R.tries >= 3 ? 'לא נורא! מקשיבים איך אומרים את המילה וממשיכים' : s === 1 ? `❌ ${esb('¡Casi!')} כמעט! מקשיבים שוב ומנסים` : '❌ זה לא נשמע כמו המילה. מקשיבים שוב ומנסים';
+    return `<div class="res ${good || L.self ? 'good' : 'bad'}"><div class="stars" aria-label="${s} כוכבים">${'⭐'.repeat(s)}${'<span class="off">⭐</span>'.repeat(3 - s)}</div><p class="msg">${msg}</p>${L.self ? '' : `<div class="cmp"><div><small>שמעתי</small><b lang="es" dir="ltr" class="${good ? 'g' : 'r'}">${esc(L.heard || '—')}</b></div><div><small>המילה</small><b lang="es" dir="ltr">${esc(capFirst(w.es))}</b></div></div>`}</div>`;
   };
-  if (R.phase === 'intro') return `<div class="mic idle" aria-hidden="true">👂</div><p class="hint">מקשיבים ללורו...</p>`;
-  if (R.phase === 'listen') return `${R.last ? fbk() : ''}<div class="mic on" role="img" aria-label="המיקרופון פתוח">🎙️</div><p class="hint">${R.last ? 'נסו שוב, אני מקשיב 👂' : 'עכשיו תורך! אומרים את המילה בקול'}</p><p class="heard" id="heardLive">${R.quiet ? 'לא שמעתי... אפשר לומר שוב, קצת יותר חזק 🙂' : ''}</p><button class="link" data-a="skip">דילוג</button>`;
+  if (R.phase === 'intro') return `<div class="mic idle" aria-hidden="true">👂</div><p class="hint">${R.quiet ? '🔇 לא שמעתי כלום. מקשיבים ללורו ומנסים שוב' : 'מקשיבים ללורו...'}</p>`;
+  if (R.phase === 'retry') return `${fbk()}<div class="mic idle" aria-hidden="true">🔁</div><p class="hint">לורו אומר את המילה שוב, לאט</p>`;
+  if (R.phase === 'listen') return `${R.last ? fbk() : ''}<div class="mic on" role="img" aria-label="המיקרופון פתוח">🎙️</div><p class="hint">${R.last ? 'עכשיו שוב! אומרים את המילה' : 'עכשיו תורך! אומרים את המילה בקול'}</p><p class="heard" id="heardLive">${R.quiet ? '🔇 לא שמעתי כלום. אומרים קצת יותר חזק 🙂' : ''}</p><button class="link" data-a="skip">דילוג</button>`;
   if (R.phase === 'listening') return `<button class="mic on" data-a="stop" aria-label="מקשיב, לחיצה לעצירה">🎙️</button><p class="hint">מקשיב... אומרים את המילה</p>`;
   if (R.phase === 'result' && R.last) return fbk() + (fin ? (R.res[R.idx] && S.data.settings.autoNext ? `<p class="muted">ממשיכים לבד למילה הבאה...</p>${nextBtn}` : nextBtn) : `<div class="row center"><button class="btn primary" data-a="listen">🎤 עוד ניסיון</button><button class="link" data-a="skip">דילוג</button></div>`);
-  if (!SRC || srBlocked) return `<p class="hint">${micMsg()}</p><button class="btn primary big" data-a="selfok">✅ אמרתי!</button><button class="link" data-a="skip">דילוג</button>`;
-  return `<button class="mic" data-a="listen" aria-label="הפעלת המיקרופון">🎤</button><p class="hint">${micMode() === 'tap' ? 'עכשיו תורך! לוחצים ואומרים את המילה' : 'לוחצים על המיקרופון כדי להפעיל אותו'}</p><button class="link" data-a="skip">דילוג</button>`;
+  if (!SRC || srBlocked) return `<p class="hint">${micMsg()}</p><button class="btn primary big" data-a="selfok">✅ אמרתי בקול (בלי בדיקה)</button><button class="link" data-a="skip">דילוג</button>`;
+  return `${R.quiet ? '<p class="heard">🔇 לא שמעתי כלום. מנסים שוב?</p>' : ''}<button class="mic" data-a="listen" aria-label="הפעלת המיקרופון">🎤</button><p class="hint">${micMode() === 'tap' ? 'עכשיו תורך! לוחצים ואומרים את המילה' : 'לוחצים על המיקרופון כדי להפעיל אותו'}</p><button class="link" data-a="skip">דילוג</button>`;
 }
 function vWord() {
-  const R = S.round, w = curWord(), st = S.data.settings, tr = SP.analyze(w.es);
+  const R = S.round, w = curWord(), st = S.data.settings, tr = SP.analyze(capFirst(w.es));
   return `${roundBar()}
-  <div class="card word-card">
-    <div class="pic" aria-hidden="true">${w.em}</div>
+  <div class="card word-card${R.fx ? ' ' + R.fx : ''}">
+    <div class="pic" aria-hidden="true">${fixEm(w.em)}</div>
     <div class="es-word" lang="es" dir="ltr">${tr.esHtml}</div>
     <div>${genderTag(w.es)}${R.rev.has(R.items[R.idx]) ? '<span class="rev">🔁 חזרה</span>' : ''}</div>
     ${st.translit ? `<div class="translit" title="איך אומרים">${tr.heHtml}</div>` : ''}
@@ -1334,7 +1877,7 @@ function vWord() {
     <div class="row center">
       <button class="btn icon" data-a="sayw" aria-label="להשמיע">🔊</button>
       <button class="btn icon" data-a="sayslow" aria-label="להשמיע לאט">🐢</button>
-      ${TTS.he && st.heVoice ? '<button class="btn icon" data-a="sayhe" aria-label="להשמיע את התרגום">🇮🇱</button>' : ''}
+      ${TTS.he && st.heVoice ? '<button class="btn" data-a="sayhe" aria-label="להשמיע את התרגום בעברית">🔊 עברית</button>' : ''}
     </div>
   </div>
   <div class="speak">${vSpeak()}</div>`;
@@ -1343,16 +1886,16 @@ function fb(it) {
   const R = S.round, last = R.idx + 1 >= R.items.length;
   const right = it.type === 'wo' ? it.full : it.ans;
   return `<div class="fb ${R.ok ? 'ok' : 'no'}" role="status">
-    <p class="fbt">${R.ok ? esc(R.msg) : `התשובה הנכונה: <b lang="es" dir="ltr">${esc(right)}</b>`}</p>
+    <p class="fbt">${R.ok ? '✅ ' + okLine(R) : `❌ התשובה הנכונה: <b lang="es" dir="ltr">${esc(right)}</b>`}</p>
     ${it.tip && (!R.ok || R.part === 3) ? `<p class="tip">💡 ${esc(it.tip)}</p>` : ''}
     <button class="btn primary big" data-a="next">${last ? 'לסיכום 🏁' : 'הבא ←'}</button></div>`;
 }
 function vWO(it) {
   const R = S.round, done = R.ans != null, W = R.wo, ready = W.placed.length === it.tiles.length;
-  const placed = W.placed.map((t, i) => `<button class="tile" data-a="unplace" data-v="${i}"${done ? ' disabled' : ''}>${esc(t.w)}</button>`).join('');
+  const placed = W.placed.map((t, i) => `<button class="tile" data-a="unplace" data-v="${i}"${done ? ' disabled' : ''}>${esc(i === 0 ? capFirst(t.w) : t.w)}</button>`).join('') + (ready && W.placed.length ? '<span class="tdot" aria-hidden="true">.</span>' : '');
   const bank = W.bank.map((t, i) => `<button class="tile${t.used ? ' used' : ''}" data-a="place" data-v="${i}"${t.used || done ? ' disabled' : ''}>${esc(t.w)}</button>`).join('');
   return `${roundBar()}
-  <div class="lead">${loroSays('מסדרים את המילים למשפט נכון')}</div>
+  <div class="lead">${done && R.ok ? loroSays(okLine(R), true, true) : loroSays(done ? 'לא נורא, לומדים מטעויות!' : 'מסדרים את המילים למשפט נכון')}</div>
   <div class="card qcard">
     <button class="btn icon spk" data-a="sayq" aria-label="להשמיע את המשפט">🔊</button>
     <p class="he-tr big">${esc(heR(it.he))}</p>
@@ -1368,7 +1911,7 @@ function vQ() {
   const blank = done ? `<span class="blank ${R.ok ? 'ok' : 'no'}">${esc(it.ans)}</span>` : '<span class="blank">&nbsp;?&nbsp;</span>';
   const opts = R.opts.map((o, i) => { let c = 'opt'; if (done) c += o === it.ans ? ' right' : i === R.pick ? ' wrong' : ' dim'; return `<button class="${c}" data-a="opt" data-v="${i}"${done ? ' disabled' : ''} lang="es" dir="ltr">${esc(o)}</button>`; }).join('');
   return `${roundBar()}
-  <div class="lead">${loroSays(R.part === 2 ? 'בוחרים את המילה שחסרה' : 'בוחרים את הצורה הנכונה')}</div>
+  <div class="lead">${done && R.ok ? loroSays(okLine(R), true, true) : loroSays(done ? 'לא נורא, לומדים מטעויות!' : (R.part === 2 ? 'בוחרים את המילה שחסרה' : 'בוחרים את הצורה הנכונה'))}</div>
   <div class="card qcard">
     <button class="btn icon spk" data-a="sayq" aria-label="להשמיע את המשפט">🔊</button>
     <p class="sent" lang="es" dir="ltr">${esc(it.pre)}${blank}${esc(it.post)}</p>
@@ -1382,7 +1925,7 @@ function vSummary() {
   const [em, t1, t2] = pc === 1 ? ['🏆', '¡Perfecto!', 'סיבוב מושלם!'] : pc >= .7 ? ['🌟', '¡Muy bien!', 'סיבוב מעולה!'] : pc >= .4 ? ['💪', '¡Bien!', 'ממשיכים להתאמן'] : ['🌱', '¡Vamos!', 'כל ניסיון מקדם'];
   const list = R.items.map((x, i) => {
     const good = R.res[i];
-    if (R.kind === 'w') { const w = WORDS[x]; return `<li><span>${good ? '✅' : '🔁'}</span><b lang="es" dir="ltr">${esc(w.es)}</b><small>${esc(w.he)}</small></li>`; }
+    if (R.kind === 'w') { const w = WORDS[x]; return `<li><span>${good ? '✅' : '🔁'}</span><b lang="es" dir="ltr">${esc(capFirst(w.es))}</b><small>${esc(w.he)}</small></li>`; }
     return `<li><span>${good ? '✅' : '🔁'}</span><b lang="es" dir="ltr">${esc(x.full)}</b><small>${esc(heR(x.he))}</small></li>`;
   }).join('');
   const nb = (R.newB || []).map(id => { const b = BADGES.find(x => x[0] === id); return b ? `<span class="chip">${b[1]} ${esc(b[2])}</span>` : ''; }).join('');
@@ -1391,8 +1934,9 @@ function vSummary() {
     <h1><span class="es" lang="es" dir="ltr">${t1}</span> ${t2}</h1>
     <p>${ok} נכונות מתוך ${n}</p>
     <div class="big-stars">+${R.stars} ⭐</div>
-    ${R.lvUp != null ? `<p><span class="chip">דרגה חדשה: ${LEVELS[R.lvUp][3]} <span lang="es">${LEVELS[R.lvUp][1]}</span></span></p>` : ''}
+    ${R.lvUp != null ? `<p><span class="chip">דרגה חדשה: ${LEVELS[R.lvUp][3]} <span lang="es" dir="ltr">${LEVELS[R.lvUp][1]}</span></span></p>` : ''}
     ${nb ? `<h3>הישגים חדשים</h3><div class="newb">${nb}</div>` : ''}
+    ${rewards(R)}
     <div class="row"><button class="btn primary" data-a="again">🔁 עוד סיבוב</button><button class="btn" data-a="home">🏠 לבית</button></div>
   </div>
   <h3>מה היה בסיבוב</h3>
@@ -1454,7 +1998,7 @@ function vNew() {
   const T = S.temp;
   return `<div class="welcome"><div class="hero-loro" aria-hidden="true">🦜</div>
     <h1 class="es" lang="es" dir="ltr">¡Hola! Soy Loro.</h1>
-    <p>אני התוכי לורו, ואלמד אותך ספרדית של ארגנטינה. בואו נכיר!</p></div>
+    <p>אני התוכי לורו, ואלמד אותך ספרדית של ארגנטינה. בואו נכיר!</p><button class="link" data-a="intro">❓ איך זה עובד?</button></div>
   <div class="card form">
     <label>איך קוראים לך?<input id="pname" type="text" maxlength="20" value="${esc(T.name || '')}" autocomplete="off" dir="auto"></label>
     <fieldset><legend>אני</legend><div class="seg"><button class="btn${T.g === 'm' ? ' sel' : ''}" data-a="setg" data-v="m" aria-pressed="${T.g === 'm'}">👦 בן</button><button class="btn${T.g === 'f' ? ' sel' : ''}" data-a="setg" data-v="f" aria-pressed="${T.g === 'f'}">👧 בת</button></div></fieldset>
@@ -1463,10 +2007,134 @@ function vNew() {
     ${Object.keys(S.data.profiles).length ? '<button class="link" data-a="profiles">חזרה לרשימת השחקנים</button>' : ''}
   </div>`;
 }
-const VIEWS = { new: vNew, profiles: vProfiles, home: vHome, cats: vCats, word: vWord, q: vQ, summary: vSummary, badges: vBadges, settings: vSettings };
+function stickerHtml(i, reveal, dup, count) {
+  const x = STICKERS[i], r = RAR[x[3]];
+  return `<button class="stk ${r[1]}${reveal ? ' reveal' : ''}" data-a="saystk" data-v="${i}" aria-label="${esc(x[1])}"><span class="se">${x[0]}</span><b lang="es" dir="ltr">${esc(capFirst(x[1]))}</b><small>${esc(x[2])}</small><i>${dup ? 'חוזרת · +3 ⭐' : r[0]}</i>${count > 1 ? `<em class="cnt">×${count}</em>` : ''}</button>`;
+}
+const stkBlock = list => list && list.length ? `<h3>🃏 ${list.length > 1 ? 'פיגוריטס חדשות!' : 'פיגוריטה חדשה!'}</h3><div class="stk-row">${list.map(x => stickerHtml(x.i, true, x.dup)).join('')}</div>` : '';
+const arriveCard = st => { const J = JOURNEY[st]; return `<div class="card arrive"><div class="jbig" aria-hidden="true">${J[0]}</div><b class="es" lang="es" dir="ltr">¡Llegaste a ${esc(J[1])}!</b><p>${esc(J[2])}</p></div>`; };
+const rewards = R => stkBlock(R.stickers) + (R.newStation != null ? arriveCard(R.newStation) : '');
+const navBar = () => `<nav class="nav" aria-label="ניווט">${NAVS.map(([sc, e, t]) => `<button class="${S.screen === sc ? 'on' : ''}" data-a="nav" data-v="${sc}"${S.screen === sc ? ' aria-current="page"' : ''}><span aria-hidden="true">${e}</span><small>${t}</small></button>`).join('')}</nav>`;
+function vGames() {
+  const p = S.p, b = p.best || {};
+  const card = (a, ic, t, sub, st, cls) => `<button class="game ${cls}" data-a="${a}"><span class="gic" aria-hidden="true">${ic}</span><b lang="es" dir="ltr">${t}</b><small>${sub}</small><em>${st}</em></button>`;
+  return `${backBar('משחקים')}
+  <h3>${fixEm('🇦🇷')} משחקים מארגנטינה</h3>
+  <div class="games">
+    ${card('pen', '⚽', '¡Penales!', 'דו-קרב פנדלים: עונים נכון ובועטים לשער', `🏆 ${p.st.cup || 0} ניצחונות`, 'g3')}
+    ${card('dlgs', '🧉', 'Charlas', 'שיחות בקיוסק, בגינה, באוטובוס ואצל סבתא', `${Object.keys(p.dlg || {}).length} / ${DIALOGS.length} שיחות`, 'g4')}
+    ${card('cooks', '🥟', 'La cocina', 'מבשלים מאכלים ארגנטינאיים לפי ההוראות של לורו', `${Object.keys(p.recipes || {}).length} / ${RECIPES.length} מתכונים`, 'g5')}
+    ${card('triv', '🌞', '¿Qué sabés?', 'טריוויה: כמה יודעים על ארגנטינה?', `${p.st.triv || 0} תשובות נכונות`, 'g6')}
+  </div>
+  <h3>🎯 משחקי מילים</h3>
+  <div class="games">
+    ${card('memo', '🃏', 'Memotest', 'משחק זיכרון: מילה בספרדית והפירוש שלה', b.memo ? `השיא: ${b.memo} מהלכים` : 'עוד אין שיא', 'g1')}
+    ${card('speed', '⏱️', 'Contrarreloj', 'כמה מילים מצליחים בדקה אחת?', b.speed ? `השיא: ${b.speed} נקודות` : 'עוד אין שיא', 'g2')}
+  </div>`;
+}
+function vMemo() {
+  const R = S.round;
+  const cards = R.cards.map((c, j) => {
+    const w = WORDS[c.i], show = c.open || c.done;
+    const face = c.side === 'es' ? `<b lang="es" dir="ltr">${esc(capFirst(w.es))}</b>` : `<span class="me" aria-hidden="true">${fixEm(w.em)}</span><small>${esc(shortHe(w.he))}</small>`;
+    return `<button class="mcard${show ? ' open' : ''}${c.done ? ' done' : ''}" data-a="flip" data-v="${j}" aria-label="${show ? esc(c.side === 'es' ? w.es : shortHe(w.he)) : 'קלף סגור'}"${c.done ? ' disabled' : ''}>${show ? face : '<span class="back" aria-hidden="true">🦜</span>'}</button>`;
+  }).join('');
+  return `<header class="top"><button class="btn icon" data-a="quitg" aria-label="יציאה מהמשחק">✕</button><h2 class="ttl es" lang="es" dir="ltr">Memotest</h2><span class="chip">🔁 ${R.moves}</span><span class="chip">✅ ${R.found}/${R.pairs}</span></header>
+  <div class="lead">${loroSays('מוצאים זוגות: מילה בספרדית + הפירוש שלה', R.found > 0 && R.first < 0 && !R.lock)}</div>
+  <div class="memo">${cards}</div>`;
+}
+function vSpeed() {
+  const R = S.round, q = R.q, w = WORDS[q.i], left = Math.max(0, R.end - Date.now());
+  const opts = q.opts.map((o, j) => { let c = 'opt he'; if (q.pick >= 0) c += o === q.right ? ' right' : j === q.pick ? ' wrong' : ' dim'; return `<button class="${c}" data-a="sp" data-v="${j}"${q.pick >= 0 ? ' disabled' : ''}>${esc(o)}</button>`; }).join('');
+  return `<header class="top"><button class="btn icon" data-a="quitg" aria-label="יציאה מהמשחק">✕</button><div class="tbar" aria-hidden="true"><i id="tbar" style="width:${left / 600}%"></i></div><span class="chip">⏱️ <b id="tsec">${Math.ceil(left / 1000)}</b></span></header>
+  <div class="card qcard"><div class="speed-score">✅ ${R.score} ${R.combo >= 3 ? `<span class="chip hot">🔥×${R.combo}</span>` : ''}</div>
+  <p class="sent" lang="es" dir="ltr">${esc(capFirst(w.es))}</p><p class="he-tr">מה הפירוש בעברית?</p></div>
+  <div class="opts">${opts}</div>`;
+}
+function vAlbum() {
+  const p = S.p, n = albumCount(p);
+  const tiers = [['L', '🌟 אגדיות: סמלים של ארגנטינה'], ['R', '✨ נדירות'], ['C', '⭐ רגילות']];
+  return `${backBar('האלבום שלי')}
+  <div class="card album-head"><b>${n} / ${STICKERS.length}</b> פיגוריטס<div class="bar" aria-hidden="true"><i style="width:${Math.round(100 * n / STICKERS.length)}%"></i></div><small class="muted">אחרי כל סיבוב ומשחק מקבלים פיגוריטה, ומדבקה שחוזרת שווה 3 ⭐. לוחצים על מדבקה כדי לשמוע את השם שלה.</small></div>
+  ${tiers.map(([t, title]) => `<h3>${title}</h3><div class="stk-grid">${STICKERS.map((x, i) => x[3] !== t ? '' : p.album[i] ? stickerHtml(i, false, false, p.album[i]) : `<div class="stk empty" aria-label="מדבקה חסרה"><span class="se">?</span><small>${t === 'L' ? '🌟' : t === 'R' ? '✨' : '⭐'}</small></div>`).join('')}</div>`).join('')}`;
+}
+function vMap() {
+  const p = S.p, st = stationOf(p), lc = learnedCount(p);
+  return `${backBar('המסע בארגנטינה')}
+  <p class="muted">כל מילה שאומרים נכון מקדמת אותך במסע, מבואנוס איירס ועד אושואיה. לוחצים על תחנה כדי לשמוע את השם שלה.</p>
+  <ol class="trail">${JOURNEY.map((J, i) => `<li class="${i < st ? 'past' : i === st ? 'here' : 'lock'}"><button class="stn" data-a="stn" data-v="${i}"${i > st ? ' disabled' : ''}><span class="sem" aria-hidden="true">${i <= st ? J[0] : '🔒'}</span><span><b lang="es" dir="ltr">${J[1]}</b><small>${i <= st ? esc(J[2]) : `נפתח אחרי ${J[3]} מילים (עכשיו ${lc})`}</small></span></button></li>`).join('')}</ol>`;
+}
+function vIntro() {
+  const k = Math.min(S.temp.slide || 0, SLIDES.length - 1), x = SLIDES[k], last = k === SLIDES.length - 1;
+  const body = Array.isArray(x[2]) ? `<ul class="ilist">${x[2].map(t => `<li>${t}</li>`).join('')}</ul>` : `<p class="itext">${esc(x[2])}</p>`;
+  return `<div class="intro"><div class="iem" aria-hidden="true">${x[0]}</div>
+    <h1${k === 0 ? ' class="es" lang="es" dir="ltr"' : ''}>${esc(x[1])}</h1>${body}
+    <div class="idots" aria-hidden="true">${SLIDES.map((_, i) => `<i class="${i === k ? 'on' : ''}"></i>`).join('')}</div>
+    <button class="btn primary big" data-a="islide" data-v="${last ? 'go' : k + 1}">${last ? 'יאללה, מתחילים! 🚀' : 'הבא ←'}</button>
+    ${last ? '' : '<button class="link" data-a="islide" data-v="go">דילוג</button>'}</div>`;
+}
+function vGsum() {
+  const g = S.gsum || {};
+  return `<div class="sum"><div class="trophy" aria-hidden="true">${g.em || '🏆'}</div>
+    <h1 class="es" lang="es" dir="ltr">${esc(g.title || '')}</h1><p>${esc(g.sub || '')}</p>
+    <div class="big-stars">+${g.stars || 0} ⭐</div>
+    ${g.record ? '<p><span class="chip hot">🏅 שיא חדש!</span></p>' : ''}
+    ${stkBlock(g.stickers)}
+    <div class="row">${g.again ? `<button class="btn primary" data-a="${g.again}">🔁 עוד פעם</button>` : ''}<button class="btn" data-a="home">🏠 לבית</button></div></div>`;
+}
+function argCard() { const a = argOfDay(); return `<div class="card argday"><div class="ah"><span aria-hidden="true">🧉</span><b>הביטוי הארגנטינאי של היום</b><button class="btn icon" data-a="sayarg" aria-label="להשמיע">🔊</button></div><p class="ae" lang="es" dir="ltr">${esc(a[0])}</p><p class="am">${esc(heR(a[1]))}</p><p class="ax" lang="es" dir="ltr">${esc(a[2])}</p><small class="muted">${esc(heR(a[3]))}</small></div>`; }
+const gstrip = () => `<h3>🎮 משחקים מארגנטינה</h3><div class="gstrip"><button data-a="pen"><span aria-hidden="true">⚽</span><small>פנדלים</small></button><button data-a="dlgs"><span aria-hidden="true">🧉</span><small>שיחות</small></button><button data-a="cooks"><span aria-hidden="true">🥟</span><small>מטבח</small></button><button data-a="triv"><span aria-hidden="true">🌞</span><small>טריוויה</small></button></div>`;
+function vPick() {
+  const dlg = S.temp.pick === 'dlg', list = dlg ? DIALOGS : RECIPES, done = (dlg ? S.p.dlg : S.p.recipes) || {};
+  return `<header class="top"><button class="btn icon" data-a="nav" data-v="games" aria-label="חזרה למשחקים">→</button><h2 class="ttl">${dlg ? '🧉 שיחות בארגנטינה' : '🥟 המטבח הארגנטינאי'}</h2></header>
+  <p class="muted">${dlg ? 'בוחרים מקום ומדברים עם האנשים שם. לורו מקריא כל משפט.' : 'בוחרים מאכל, ולורו אומר בספרדית איזה מצרך להוסיף.'}</p>
+  <div class="games">${list.map((x, i) => { const used = S.sess.s.has((dlg ? 'dlg:' : 'cook:') + x[0]); return `<button class="game ${['g3', 'g4', 'g5', 'g6'][i % 4]}${used ? ' used' : ''}" data-a="${dlg ? 'dlg' : 'cook'}" data-v="${x[0]}"${used ? ' disabled' : ''}><span class="gic" aria-hidden="true">${x[1]}</span><b lang="es" dir="ltr">${esc(capFirst(x[2]))}</b><small>${esc(x[3])}</small><em>${used ? 'כבר שוחק היום ✓' : done[x[0]] ? '✅ הושלם' : '✨ חדש'}</em></button>`; }).join('')}</div>`;
+}
+function vPen() {
+  const R = S.round, q = R.q, w = WORDS[q.i], done = q.pick >= 0;
+  const row = arr => { let t = ''; for (let i = 0; i < Math.max(5, arr.length); i++) t += i < arr.length ? (arr[i] ? '⚽' : '❌') : '⚪'; return t; };
+  const opts = q.opts.map((o, j) => { let c = 'opt'; if (done) c += o === q.right ? ' right' : j === q.pick ? ' wrong' : ' dim'; return `<button class="${c}" data-a="pk" data-v="${j}"${done ? ' disabled' : ''}${q.shoot ? '' : ' lang="es" dir="ltr"'}>${esc(o)}</button>`; }).join('');
+  return `<header class="top"><button class="btn icon" data-a="quitg" aria-label="יציאה מהמשחק">✕</button><h2 class="ttl es" lang="es" dir="ltr">¡Penales!</h2></header>
+  <div class="score"><span>${fixEm('🇦🇷')} ARG</span><b>${R.us}</b><span>-</span><b>${R.them}</b><span>${esc(R.rv[0].slice(0, 3).toUpperCase())} ${fixEm(R.rv[2])}</span></div>
+  <div class="kicks"><span>${row(R.kU)}</span><span>${row(R.kT)}</span></div>
+  <div class="pitch ${R.anim}" aria-hidden="true"><span class="goal">🥅</span><span class="keeper">🧤</span><span class="ball">⚽</span></div>
+  ${R.com ? `<p class="com"><span lang="es" dir="ltr">${esc(R.com[0])}</span><br><small class="muted">${esc(R.com[1])}</small></p>` : `<p class="turn">${q.shoot ? '⚽ תורך לבעוט! תשובה נכונה = גול' : `🧤 ${esc(R.rv[1])} בועטת! תשובה נכונה = הצלה`}</p>`}
+  <div class="card qcard">${q.shoot ? `<button class="btn icon spk" data-a="pensay" aria-label="להשמיע">🔊</button><p class="sent" lang="es" dir="ltr">${esc(capFirst(w.es))}</p><p class="he-tr">מה הפירוש?</p>` : `<p class="sent">${esc(shortHe(w.he))}</p><p class="he-tr">איך אומרים בספרדית?</p>`}</div>
+  <div class="opts tri">${opts}</div>`;
+}
+function vDlg() {
+  const R = S.round, d = R.d;
+  const log = R.log.map(m => `<div class="msg ${m.who}"><span class="mav" aria-hidden="true">${m.who === 'npc' ? d[4] : S.p.avatar}</span><div class="mb"><p lang="es" dir="ltr">${esc(m.es)}</p><small>${esc(heR(m.he))}</small></div></div>`).join('');
+  const opts = R.opts.map((o, j) => { const bad = R.bad.includes(j); return `<button class="opt reply${bad ? ' wrong' : ''}${R.hint && o.ok ? ' right' : ''}" data-a="reply" data-v="${j}"${bad ? ' disabled' : ''}><span lang="es" dir="ltr">${esc(o.es)}</span>${bad ? `<small>${esc(heR(o.he))}</small>` : ''}</button>`; }).join('');
+  return `<header class="top"><button class="btn icon" data-a="quitg" aria-label="יציאה מהשיחה">✕</button><h2 class="ttl">${d[1]} <span lang="es" dir="ltr">${esc(d[2])}</span></h2><span class="chip">💬 ${Math.min(R.step + 1, d[5].length)}/${d[5].length}</span></header>
+  <div class="chat">${log}</div>
+  ${R.waiting ? '' : `<p class="muted center">מה עונים?</p><div class="replies">${opts}</div>`}`;
+}
+function vCook() {
+  const R = S.round, r = R.r, want = R.order[R.idx];
+  const slots = R.order.map((g, i) => `<span class="slot${i < R.idx ? ' ok' : ''}">${i < R.idx ? g[0] : '❔'}</span>`).join('');
+  const items = R.counter.map((c, j) => `<button class="ing${c.used ? ' used' : ''}${c.bad ? ' bad' : ''}${R.miss >= 2 && want && c.g === want ? ' hint' : ''}" data-a="ing" data-v="${j}"${c.used ? ' disabled' : ''} aria-label="${c.bad ? esc(c.g[1]) : 'מצרך'}"><span>${c.g[0]}</span>${c.bad ? `<small lang="es" dir="ltr">${esc(capFirst(c.g[1]))}</small>` : ''}</button>`).join('');
+  return `<header class="top"><button class="btn icon" data-a="quitg" aria-label="יציאה מהמטבח">✕</button><h2 class="ttl">${r[1]} <span lang="es" dir="ltr">${esc(capFirst(r[2]))}</span></h2></header>
+  <div class="card cookcard"><div class="bowl" aria-hidden="true">🥣</div><div class="slots">${slots}</div>
+  ${want ? `<p class="need"><button class="btn icon" data-a="cooksay" aria-label="להשמיע">🔊</button><span lang="es" dir="ltr">¡Necesito <b>${esc(want[1])}</b>!</span></p><p class="he-tr">${R.miss >= 1 ? 'רמז: ' + esc(want[2]) : 'לוחצים על המצרך הנכון'}</p>` : `<p class="need"><b class="es" lang="es" dir="ltr">¡Listo! ¡Qué rico!</b> ${r[1]}</p>`}</div>
+  <div class="counter">${items}</div>`;
+}
+function vTriv() {
+  const R = S.round, t = TRIVIA[R.items[R.idx]], done = R.ans != null, last = R.idx + 1 >= R.items.length;
+  const opts = R.opts.map((o, j) => { let c = 'opt'; if (done) c += o === t[2] ? ' right' : j === R.pick ? ' wrong' : ' dim'; return `<button class="${c}" data-a="tv" data-v="${j}"${done ? ' disabled' : ''} lang="es" dir="ltr">${esc(o)}</button>`; }).join('');
+  const dots = R.items.map((_, i) => `<i class="d${i < R.idx || (i === R.idx && done) ? (R.res[i] ? ' ok' : ' no') : i === R.idx ? ' cur' : ''}"></i>`).join('');
+  return `<header class="top"><button class="btn icon" data-a="quitg" aria-label="יציאה מהטריוויה">✕</button><div class="dots">${dots}</div></header>
+  <div class="lead">${done && R.ans ? loroSays(`${esb(R.praise || '¡Muy bien!')} נכון מאוד!`, true, true) : loroSays(heR(done ? 'לא נורא, עכשיו {אתה יודע|את יודעת}!' : 'מה {אתה יודע|את יודעת} על ארגנטינה?'))}</div>
+  <div class="card qcard"><button class="btn icon spk" data-a="tvsay" aria-label="להשמיע">🔊</button><p class="sent" lang="es" dir="ltr">${esc(t[0])}</p><p class="he-tr">${esc(t[1])}</p></div>
+  <div class="opts tri">${opts}</div>
+  ${done ? `<div class="fb ${R.ans ? 'ok' : 'no'}"><p class="fbt">${R.ans ? '✅ נכון!' : `❌ התשובה הנכונה: ${esb(t[2])}`}</p><p class="tip">💡 ${esc(t[5])}</p><button class="btn primary big" data-a="tvnext">${last ? 'לסיכום 🏁' : 'הבא ←'}</button></div>` : ''}`;
+}
+const VIEWS = { pen: vPen, dlg: vDlg, cook: vCook, triv: vTriv, pick: vPick, new: vNew, profiles: vProfiles, home: vHome, cats: vCats, word: vWord, q: vQ, summary: vSummary, badges: vBadges, settings: vSettings, intro: vIntro, games: vGames, memo: vMemo, speed: vSpeed, album: vAlbum, map: vMap, gsum: vGsum };
 function render() {
-  if (!S.p && !['new', 'profiles'].includes(S.screen)) S.screen = Object.keys(S.data.profiles).length ? 'profiles' : 'new';
-  $('#app').innerHTML = `<main class="wrap">${(VIEWS[S.screen] || vHome)()}</main>`;
+  if (!S.p && !['new', 'profiles', 'intro'].includes(S.screen)) S.screen = Object.keys(S.data.profiles).length ? 'profiles' : 'new';
+  const nav = !!S.p && NAVS.some(n => n[0] === S.screen);
+  $('#app').innerHTML = `<main class="wrap${nav ? ' hasnav' : ''}">${(VIEWS[S.screen] || vHome)()}</main>${nav ? navBar() : ''}`;
+  if (S.screen === 'dlg') { const m = $('.chat .msg:last-child'); if (m && m.scrollIntoView) try { m.scrollIntoView({ block: 'nearest' }); } catch (e) {} }
   if (S.autoSpeak) {
     S.autoSpeak = false; const R = S.round, idx = R ? R.idx : -1, scr = S.screen;
     const still = () => S.round === R && R.idx === idx && S.screen === scr;
@@ -1478,17 +2146,110 @@ function go(s) { if (s !== 'word') Live.stop(); S.screen = s; hush(); render(); 
 
 /* ---------- actions ---------- */
 const A = {
+  nav: v => { const R = S.round; if (R && R.timer) clearInterval(R.timer); S.round = null; go(v); },
+  intro: () => { S.temp.slide = 0; go('intro'); },
+  islide: v => { if (v === 'go') { S.temp.slide = 0; S.data.introSeen = true; save(); go(S.p ? 'home' : (Object.keys(S.data.profiles).length ? 'profiles' : 'new')); } else { S.temp.slide = +v; render(); } },
+  chest: () => {
+    const p = S.p; if (todayStars(p) < GOAL || p.chestDay === dayNum()) return;
+    p.chestDay = dayNum(); S.round = null; addStars(10);
+    const stickers = awardStickers(1); checkBadges(); save(); SFX.level(); confetti(50);
+    S.gsum = { em: '🎁', title: '¡Cofre del día!', sub: 'התיבה היומית נפתחה: 10 כוכבים ופיגוריטה', stars: 10, stickers, again: null }; go('gsum');
+  },
+  memo: () => startMemo(),
+  pen: () => startPen(),
+  pk: v => {
+    const R = S.round; if (!R || R.kind !== 'pen' || R.lock) return;
+    const q = R.q, j = +v, ok = q.opts[j] === q.right; q.pick = j; R.lock = true;
+    if (q.shoot) { R.ku++; R.kU.push(ok); if (ok) R.us++; R.anim = ok ? 'a-goal' : 'a-save'; R.com = ok ? ['¡Gooool de Argentina! ⚽', 'גול של ארגנטינה!', '¡Gol! ¡Gol de Argentina!'] : ['¡Atajó el arquero!', `השוער של ${R.rv[1]} עצר את הבעיטה.`, '¡Atajó el arquero!']; }
+    else { R.kt++; R.kT.push(!ok); if (!ok) R.them++; R.anim = ok ? 'a-save' : 'a-goal'; R.com = ok ? ['¡Atajaste! 🧤', 'עצרת את הבעיטה! איזה שוער!', '¡Atajaste! ¡Muy bien!'] : [`Gol de ${R.rv[0]}.`, `גול של ${R.rv[1]}.`, `Gol de ${R.rv[0]}.`]; }
+    if (ok) { SFX.ok(); addStars(1); } else SFX.bad();
+    flash(ok, ok && q.shoot ? '⚽' : ok ? '🧤' : '');
+    render(); const pc = R.com[2]; wait(450).then(() => { if (S.round === R) say(pc); });
+    setTimeout(() => { if (S.round !== R) return; const res = penResult(R); if (res) { endPen(R, res); return; } nextPen(); if (S.round !== R) return; render(); if (R.q.shoot) say(WORDS[R.q.i].es); }, 1800);
+  },
+  pensay: () => { const R = S.round; if (R && R.q) say(WORDS[R.q.i].es); },
+  dlgs: () => { S.temp.pick = 'dlg'; go('pick'); },
+  cooks: () => { S.temp.pick = 'cook'; go('pick'); },
+  dlg: v => startDlg(v),
+  cook: v => startCook(v),
+  reply: v => {
+    const R = S.round; if (!R || R.kind !== 'dlg' || R.waiting) return;
+    const j = +v, o = R.opts[j]; if (!o || R.bad.includes(j)) return;
+    if (!o.ok) { R.bad.push(j); SFX.bad(); flash(false); if (R.bad.length >= 2) R.hint = true; render(); wait(650).then(() => { if (S.round === R && !R.waiting) say('No, esa no. Probá otra.'); }); return; }
+    if (!R.bad.length) R.first++;
+    R.log.push({ who: 'me', es: o.es, he: o.he }); R.waiting = true; SFX.ok(); flash(true); render();
+    wait(450).then(() => S.round === R ? say(o.es) : null).then(() => wait(450)).then(() => {
+      if (S.round !== R) return;
+      R.step++;
+      if (R.step >= R.d[5].length) { endDlg(R); return; }
+      dlgNpc(R); render(); say(R.log[R.log.length - 1].es);
+    });
+  },
+  ing: v => {
+    const R = S.round; if (!R || R.kind !== 'cook' || R.lock) return;
+    const c = R.counter[+v]; if (!c || c.used) return;
+    const want = R.order[R.idx];
+    if (c.g === want) {
+      c.used = true; if (!R.miss) R.first++; R.miss = 0; R.idx++; R.counter.forEach(x => { x.bad = false; }); SFX.ok(); confetti(8); flash(true, '', true);
+      if (R.idx >= R.order.length) { R.lock = true; render(); say('¡Listo! ¡Qué rico!'); setTimeout(() => endCook(R), 1500); return; }
+      render(); const it0 = c.g[1]; wait(400).then(() => S.round === R ? say('¡Sí! ' + capFirst(it0) + '.') : null).then(() => wait(250)).then(() => cookAsk(R));
+    } else { c.bad = true; R.miss++; SFX.bad(); flash(false, '', true); render(); const g0 = c.g[1]; wait(650).then(() => S.round === R ? say('No. ' + thisIs(g0)) : null).then(() => wait(200)).then(() => cookAsk(R)); }
+  },
+  cooksay: () => cookAsk(S.round),
+  triv: () => startTriv(),
+  tv: v => {
+    const R = S.round; if (!R || R.kind !== 'triv' || R.ans != null) return;
+    const t = TRIVIA[R.items[R.idx]], j = +v, ok = R.opts[j] === t[2];
+    R.pick = j; R.ans = ok; R.res[R.idx] = ok; R.praise = pick(PRAISE);
+    if (ok) { SFX.ok(); confetti(12); addStars(2); S.p.st.triv = (S.p.st.triv || 0) + 1; } else SFX.bad();
+    flash(ok);
+    checkBadges(); save(); render(); wait(650).then(() => S.round === R ? say(ok ? R.praise : 'No. La respuesta correcta es:') : null).then(() => { if (S.round === R) say(t[2]); });
+  },
+  tvnext: () => { const R = S.round; if (!R || R.kind !== 'triv') return; R.idx++; if (R.idx >= R.items.length) { endTriv(R); return; } prepTriv(); render(); sayTriv(); },
+  tvsay: () => sayTriv(),
+  sayarg: () => { const a = argOfDay(); say(a[0]).then(() => wait(350)).then(() => say(a[2])); },
+  speed: () => startSpeed(),
+  flip: v => {
+    const R = S.round; if (!R || R.kind !== 'memo' || R.lock) return;
+    const j = +v, c = R.cards[j]; if (!c || c.open || c.done) return;
+    c.open = true; SFX.tap();
+    if (c.side === 'es') say(WORDS[c.i].es);
+    if (R.first < 0) { R.first = j; render(); return; }
+    const a = R.cards[R.first]; R.first = -1; R.moves++;
+    if (a.k === c.k) {
+      a.done = c.done = true; a.open = c.open = false; R.found++; SFX.ok(); confetti(10); flash(true, '', true);
+      if (c.side !== 'es') say(WORDS[c.i].es);
+      render();
+      if (R.found === R.pairs) setTimeout(() => endMemo(R), 800);
+    } else {
+      R.lock = true; SFX.bad(); flash(false, '', true); render();
+      setTimeout(() => { if (S.round !== R) return; a.open = c.open = false; R.lock = false; render(); }, 1000);
+    }
+  },
+  sp: v => {
+    const R = S.round; if (!R || R.kind !== 'speed' || R.lock || R.ended) return;
+    const q = R.q, j = +v; q.pick = j; R.lock = true;
+    const ok = q.opts[j] === q.right;
+    if (ok) { R.score++; R.combo++; SFX.ok(); if (R.combo % 5 === 0) { R.score++; toast('🔥 5 ברצף! נקודת בונוס'); } }
+    else { R.combo = 0; SFX.bad(); }
+    flash(ok, '', true);
+    render();
+    setTimeout(() => { if (S.round !== R || R.ended || Date.now() >= R.end) return; nextSpeed(); if (S.round !== R) return; render(); say(WORDS[R.q.i].es); }, ok ? 350 : 900);
+  },
+  quitg: async () => { if (await ask('לצאת מהמשחק?', 'יציאה', 'ממשיכים לשחק')) { const R = S.round; if (R && R.timer) clearInterval(R.timer); S.round = null; go('games'); } },
+  saystk: v => { const x = STICKERS[+v]; if (x) say(x[1]); },
+  stn: v => { const J = JOURNEY[+v]; if (J) say(J[1]); },
   home: () => { S.round = null; go('home'); },
   quit: async () => { if (await ask('לצאת מהסיבוב? מה שכבר עשית נשמר.', 'יציאה', 'ממשיכים לשחק')) { S.round = null; go('home'); } },
   words: () => go('cats'),
   wround: v => startWordRound(v),
   start: v => startQRound(+v),
-  sayw: () => say(curWord().es),
-  sayslow: () => say(curWord().es, { rate: 0.6 }),
-  sayhe: () => say(curWord().he.replace(/\(.*?\)/g, '').split(';')[0], { lang: 'he' }),
-  listen: () => { const R = S.round; if (micMode() === 'live' && SRC && !srBlocked && Live.start()) { R.phase = 'listen'; R.quiet = false; armQuiet(); render(); return; } doListen(); },
+  sayw: () => replay(curWord().es),
+  sayslow: () => replay(curWord().es, { rate: 0.6 }),
+  sayhe: () => replay(curWord().he.replace(/\(.*?\)/g, '').split(';')[0], { lang: 'he' }),
+  listen: () => { const R = S.round; if (micMode() === 'live' && SRC && !srBlocked && Live.start()) { R.phase = 'listen'; R.listenAt = Date.now(); R.quiet = false; R.fx = ''; armQuiet(); render(); SFX.go(); return; } doListen(); },
   stop: () => { try { if (REC) REC.stop(); } catch (e) {} },
-  selfok: () => { const R = S.round; finalizeWord(2); R.last = { stars: 2, heard: '', self: true }; R.phase = 'result'; render(); scheduleNext(); },
+  selfok: () => { const R = S.round; if (R.res[R.idx] !== undefined) return; R.res[R.idx] = true; updateWord(curWord(), true); R.combo = 0; addStars(1); checkBadges(); save(); R.last = { stars: 1, heard: '', self: true }; R.phase = 'result'; R.fx = ''; render(); flash(true, '👍'); say(curWord().es).then(() => scheduleNext()); },
   skip: () => { const R = S.round; if (R.res[R.idx] === undefined) { R.res[R.idx] = false; R.combo = 0; updateWord(curWord(), false); save(); } nextItem(); },
   next: () => nextItem(),
   sayq: () => sayQ(S.round.items[S.round.idx], true),
@@ -1542,8 +2303,11 @@ document.addEventListener('visibilitychange', () => { if (!document.hidden) retu
 
 /* ---------- start ---------- */
 S.data = loadLocal(); applyTheme();
+Object.values(S.data.profiles).forEach(migrate);
 if (S.data.current && S.data.profiles[S.data.current]) { S.p = S.data.profiles[S.data.current]; S.screen = 'home'; }
 else S.screen = Object.keys(S.data.profiles).length ? 'profiles' : 'new';
+if (!S.data.introSeen) S.screen = 'intro';
+if (location.hash === '#test') window.__loro = { S, WORDS, STICKERS, JOURNEY, judge, starsFor, Live };
 render();
 loadVoices();
 if ('speechSynthesis' in window) { try { window.speechSynthesis.onvoiceschanged = () => { loadVoices(); if (S.screen === 'settings') render(); }; } catch (e) {} }
