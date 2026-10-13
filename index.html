@@ -2,7 +2,10 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
+<!-- © 2026 מרסלו אפליקציות (Marcelo Apps). כל הזכויות שמורות. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="author" content="מרסלו אפליקציות (Marcelo Apps)">
+<meta name="copyright" content="© 2026 מרסלו אפליקציות. כל הזכויות שמורות.">
 <meta name="theme-color" content="#74ACDF">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -218,6 +221,7 @@ button,.tile,.mcard,.stk{touch-action:manipulation;-webkit-user-select:none;user
 .nav button span{font-size:24px;line-height:1.15}.nav button small{font-size:12px;font-weight:700}
 .nav button.on{background:var(--sun2);color:var(--text)}
 .wrap.hasnav{padding-bottom:110px}
+.copy{text-align:center;color:var(--muted);font-size:12.5px;margin:26px 0 6px;line-height:1.5}
 @media (max-width:480px){
 body{font-size:16px}.wrap{padding:10px 12px 36px}h1{font-size:24px}h3{font-size:17px;margin:16px 0 8px}
 .top{margin-bottom:10px;gap:8px}.top .ttl{font-size:19px}.avbtn{width:44px;height:44px;font-size:26px}.chip{padding:3px 9px;font-size:15px}
@@ -2189,10 +2193,12 @@ function vTriv() {
   ${done ? `<div class="fb ${R.ans ? 'ok' : 'no'}"><p class="fbt">${R.ans ? '✅ נכון!' : `❌ התשובה הנכונה: ${esb(t[2])}`}</p><p class="tip">💡 ${esc(t[5])}</p><button class="btn primary big" data-a="tvnext">${last ? 'לסיכום 🏁' : 'הבא ←'}</button></div>` : ''}`;
 }
 const VIEWS = { pen: vPen, dlg: vDlg, cook: vCook, triv: vTriv, pick: vPick, new: vNew, profiles: vProfiles, home: vHome, cats: vCats, word: vWord, q: vQ, summary: vSummary, badges: vBadges, settings: vSettings, intro: vIntro, games: vGames, memo: vMemo, speed: vSpeed, album: vAlbum, map: vMap, gsum: vGsum };
+const COPY_SCREENS = ['home', 'profiles', 'new', 'settings', 'intro', 'games', 'album', 'map', 'badges', 'cats'];
+const copyright = () => { const y = new Date().getFullYear(); return `<footer class="copy">© ${y > 2026 ? '2026–' + y : '2026'} מרסלו אפליקציות · כל הזכויות שמורות</footer>`; };
 function render() {
   if (!S.p && !['new', 'profiles', 'intro'].includes(S.screen)) S.screen = Object.keys(S.data.profiles).length ? 'profiles' : 'new';
   const nav = !!S.p && NAVS.some(n => n[0] === S.screen);
-  $('#app').innerHTML = `<main class="wrap${nav ? ' hasnav' : ''}">${(VIEWS[S.screen] || vHome)()}</main>${nav ? navBar() : ''}`;
+  $('#app').innerHTML = `<main class="wrap${nav ? ' hasnav' : ''}">${(VIEWS[S.screen] || vHome)()}${COPY_SCREENS.includes(S.screen) ? copyright() : ''}</main>${nav ? navBar() : ''}`;
   if (S.screen === 'dlg') { const m = $('.chat .msg:last-child'); if (m && m.scrollIntoView) try { m.scrollIntoView({ block: 'nearest' }); } catch (e) {} }
   if (S.autoSpeak) {
     S.autoSpeak = false; const R = S.round, idx = R ? R.idx : -1, scr = S.screen;
