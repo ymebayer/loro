@@ -1293,13 +1293,26 @@ function listen() {
     let rec;
     try { rec = new SRC(); } catch (e) { return res({ err: 'unsupported', alts: [] }); }
     REC = rec;
-    rec.lang = S.data.settings.sr || 'es-AR'; rec.interimResults = false; rec.maxAlternatives = 5; rec.continuous = false;
-    const alts = []; let err = null, fin = false, t = 0;
-    const done = () => { if (fin) return; fin = true; clearTimeout(t); REC = null; res({ err, alts }); };
-    rec.onresult = e => { for (let i = 0; i < e.results.length; i++) { const r = e.results[i]; for (let j = 0; j < r.length; j++) if (r[j].transcript) alts.push({ t: r[j].transcript, c: r[j].confidence || 0 }); } };
+    rec.lang = S.data.settings.sr || 'es-AR'; rec.interimResults = true; rec.maxAlternatives = 5; rec.continuous = true;
+    const finals = []; let lastAlts = [], err = null, fin = false, lastAt = 0, t = 0, iv = 0;
+    const done = () => {
+      if (fin) return; fin = true; clearTimeout(t); clearInterval(iv); REC = null;
+      const joined = finals.filter(Boolean).join(' ').trim();
+      res({ err, alts: joined ? [{ t: joined, c: 0 }].concat(lastAlts) : lastAlts });
+    };
+    rec.onresult = e => {
+      lastAt = Date.now();
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const r = e.results[i];
+        if (!r || !r.isFinal || !r[0]) continue;
+        finals[i] = r[0].transcript; lastAlts = [];
+        for (let j = 0; j < r.length; j++) if (r[j] && r[j].transcript) lastAlts.push({ t: r[j].transcript, c: r[j].confidence || 0 });
+      }
+    };
     rec.onerror = e => { err = (e && e.error) || 'error'; if (err === 'not-allowed' || err === 'service-not-allowed') srBlocked = true; };
     rec.onend = done;
-    t = setTimeout(() => { try { rec.stop(); } catch (e) {} setTimeout(done, 700); }, 7000);
+    iv = setInterval(() => { if (finals.length && Date.now() - lastAt > 1400) { try { rec.stop(); } catch (e) {} } }, 200);
+    t = setTimeout(() => { try { rec.stop(); } catch (e) {} setTimeout(done, 700); }, 8000);
     try { rec.start(); } catch (e) { err = 'start'; done(); }
   });
 }
@@ -1334,13 +1347,13 @@ const Live = {
         }
         const sn = this.seen[i];
         if (!R || sn.r !== S.round || sn.idx !== R.idx || R.phase !== 'listen') continue;
-        if (!r.isFinal) { if (!sn.echo) { const el = $('#heardLive'); if (el) el.textContent = '👂 ' + tr; } continue; }
+        if (!r.isFinal) { if (!sn.echo) { const el = $('#heardLive'); if (el) el.textContent = '👂 ' + tr; R.quiet = false; armQuiet(); } continue; }
         if (this.done[i] !== undefined) continue;
         this.done[i] = tr;
         const alts = []; for (let j = 0; j < r.length; j++) if (r[j] && r[j].transcript) alts.push({ t: r[j].transcript, c: r[j].confidence || 0 });
         if (!alts.length) continue;
         if (sn.echo && !repeatedAfterEcho(curWord().es, alts[0].t)) continue;
-        onHeard(alts);
+        collect(alts);
       }
     };
     rec.onerror = e => {
@@ -1373,9 +1386,20 @@ function repeatedAfterEcho(target, heard) {
   for (let i = 0; i + n <= ws.length; i++) if (simi(t, ws.slice(i, i + n).join(' ')) >= 0.8) { hits++; i += n - 1; }
   return hits >= 2;
 }
-const NUMW = 'cero uno dos tres cuatro cinco seis siete ocho nueve diez once doce trece catorce quince dieciseis diecisiete dieciocho diecinueve veinte'.split(' ');
+const N0 = 'cero uno dos tres cuatro cinco seis siete ocho nueve diez once doce trece catorce quince dieciseis diecisiete dieciocho diecinueve veinte veintiuno veintidos veintitres veinticuatro veinticinco veintiseis veintisiete veintiocho veintinueve'.split(' ');
+const TENS = ['', '', '', 'treinta', 'cuarenta', 'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa'];
+const HUND = ['', 'ciento', 'doscientos', 'trescientos', 'cuatrocientos', 'quinientos', 'seiscientos', 'setecientos', 'ochocientos', 'novecientos'];
+function numEs(n) {
+  if (n < 30) return N0[n];
+  if (n < 100) return TENS[Math.floor(n / 10)] + (n % 10 ? ' y ' + N0[n % 10] : '');
+  if (n === 100) return 'cien';
+  if (n < 1000) return HUND[Math.floor(n / 100)] + (n % 100 ? ' ' + numEs(n % 100) : '');
+  if (n < 1000000) { const k = Math.floor(n / 1000), r = n % 1000; return (k === 1 ? 'mil' : numEs(k) + ' mil') + (r ? ' ' + numEs(r) : ''); }
+  if (n === 1000000) return 'un millon';
+  return '';
+}
 function pnorm(s) {
-  s = String(s).toLowerCase().replace(/\b\d+\b/g, m => +m <= 20 ? NUMW[+m] : +m === 100 ? 'cien' : +m === 1000 ? 'mil' : m);
+  s = String(s).toLowerCase().replace(/(\d)[.,](?=\d{3}\b)/g, '$1').replace(/\d+/g, m => ' ' + numEs(+m) + ' ');
   s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z\s]/g, ' ').replace(/\s+/g, ' ').trim();
   return s.replace(/ch/g, 'C').replace(/ll/g, 'y').replace(/qu/g, 'k').replace(/gu(?=[ei])/g, 'g').replace(/c(?=[ei])/g, 's').replace(/c/g, 'k').replace(/z/g, 's').replace(/v/g, 'b').replace(/h/g, '').replace(/g(?=[ei])/g, 'j').replace(/x/g, 'ks').replace(/rr/g, 'r').replace(/y\b/g, 'i');
 }
@@ -1386,19 +1410,30 @@ function lev(a, b) {
   return prev[n];
 }
 const simi = (a, b) => 1 - lev(a, b) / Math.max(a.length, b.length, 1);
+const ARTS = new Set(['el', 'la', 'los', 'las', 'un', 'una']);
 function judge(target, results) {
   const full = pnorm(target), core = pnorm(target.replace(/^(el|la|los|las|un|una)\s+/i, ''));
   const tw = full.split(' ').length, tlen = core.replace(/\s/g, '').length, short = tlen <= 2;
+  const nos = x => x.replace(/ /g, '');
   let best = 0;
   results.forEach((r, k) => {
     const a = pnorm(r.t || ''); if (!a) return;
     const ws = a.split(' ');
     let sc;
-    if (ws.length > tw + 2) sc = Math.min(0.5, Math.max(simi(full, a), simi(core, a)));
-    else if (short) { sc = ws.every(x => x === core || x === full) ? 1 : Math.max(simi(full, a), simi(core, a)) * 0.6; if (r.c > 0 && r.c < 0.4) sc = Math.min(sc, 0.6); }
+    if (short) {
+      const content = ws.filter(x => !ARTS.has(x));
+      sc = (a === full || a === core || (content.length && content.length <= 2 && content.every(x => x === core))) ? 1 : Math.max(simi(full, a), simi(core, a)) * 0.6;
+      if (r.c > 0 && r.c < 0.4) sc = Math.min(sc, 0.6);
+    } else if (ws.length > tw * 2 + 2) sc = Math.min(0.5, Math.max(simi(full, a), simi(core, a)));
     else {
-      sc = Math.max(simi(full, a), simi(core, a));
-      for (const t of [full, core]) { const n = t.split(' ').length; for (let i = 0; i + n <= ws.length; i++) sc = Math.max(sc, simi(t, ws.slice(i, i + n).join(' '))); }
+      sc = Math.max(simi(full, a), simi(core, a), simi(nos(full), nos(a)), simi(nos(core), nos(a)));
+      for (const t of [full, core]) {
+        const n = t.split(' ').length;
+        for (let i = 0; i < ws.length; i++) for (let m = Math.max(1, n - 1); m <= n + 1 && i + m <= ws.length; m++) {
+          const win = ws.slice(i, i + m).join(' ');
+          sc = Math.max(sc, simi(t, win), simi(nos(t), nos(win)));
+        }
+      }
     }
     if (k > 0) sc -= 0.06;
     best = Math.max(best, sc);
@@ -1674,7 +1709,7 @@ function mkWO(it) {
   return { placed: [], bank: bank.map(w => ({ w, used: false })) };
 }
 function prepItem() {
-  const R = S.round; R.ans = null; R.ok = null; R.pick = -1; R.phase = R.kind === 'w' ? 'intro' : 'ready'; R.tries = 0; R.last = null; R.msg = ''; R.quiet = false; clearTimeout(R.advT); clearTimeout(R.quietT); R.fx = ''; R.quietN = 0;
+  const R = S.round; R.ans = null; R.ok = null; R.pick = -1; R.phase = R.kind === 'w' ? 'intro' : 'ready'; R.tries = 0; R.last = null; R.msg = ''; R.quiet = false; clearTimeout(R.advT); clearTimeout(R.quietT); R.fx = ''; R.quietN = 0; R.buf = []; clearTimeout(R.bufT);
   if (R.kind === 'q') { const it = R.items[R.idx]; if (it.type === 'wo') R.wo = mkWO(it); else R.opts = shuffle(it.opts.slice()); }
 }
 function finalizeWord(stars) {
@@ -1766,6 +1801,27 @@ function scheduleNext() {
   if (!S.data.settings.autoNext || !R.res[idx]) return;
   clearTimeout(R.advT); R.advT = setTimeout(() => { if (S.round === R && R.idx === idx && S.screen === 'word') nextItem(); }, 900);
 }
+function isPartial(target, heard) {
+  const h = pnorm(heard).split(' ').filter(Boolean); if (!h.length) return false;
+  for (const T of [pnorm(target).split(' '), pnorm(target.replace(/^(el|la|los|las|un|una)\s+/i, '')).split(' ')]) {
+    if (h.length < T.length && simi(T.slice(0, h.length).join(' '), h.join(' ')) >= 0.7) return true;
+  }
+  return false;
+}
+function collect(alts) {
+  const R = S.round; if (!R || R.kind !== 'w' || R.phase !== 'listen' || R.res[R.idx] !== undefined) return;
+  const w = curWord(), heard = alts[0].t, hn = pnorm(heard).replace(/\s/g, ''), coreLen = pnorm(w.es.replace(/^(el|la|los|las|un|una)\s+/i, '')).replace(/\s/g, '').length;
+  if (hn.length <= 2 && coreLen > 3 && !(R.buf || []).length) { armQuiet(); return; }
+  R.buf = (R.buf || []).concat([heard]); clearTimeout(R.bufT);
+  const joined = R.buf.join(' '), cand = [{ t: joined, c: R.buf.length > 1 ? 0 : alts[0].c }].concat(alts);
+  if (starsFor(judge(w.es, cand)) >= 2) { R.buf = []; attempt(cand); return; }
+  if (R.buf.length < 4 && isPartial(w.es, joined)) {
+    const idx = R.idx; armQuiet();
+    R.bufT = setTimeout(() => { if (S.round === R && R.idx === idx && R.phase === 'listen' && R.res[idx] === undefined && R.buf.length) { const c2 = [{ t: R.buf.join(' '), c: 0 }]; R.buf = []; attempt(c2); } }, 1700);
+    return;
+  }
+  R.buf = []; attempt(cand);
+}
 function onHeard(alts) {
   const R = S.round; if (!R || R.kind !== 'w' || R.phase !== 'listen' || R.res[R.idx] !== undefined) return;
   attempt(alts);
@@ -1787,6 +1843,7 @@ function introWord() {
 }
 function openListen() {
   const R = S.round, m = micMode(), idx = R.idx;
+  R.buf = []; clearTimeout(R.bufT);
   R.fx = '';
   if (m === 'live' && SRC && !srBlocked) {
     if (Live.want && !Live.rec) Live.start();
